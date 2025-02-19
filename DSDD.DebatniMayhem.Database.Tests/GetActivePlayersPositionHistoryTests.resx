@@ -117,16 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="checksumCondition1.Configuration" xml:space="preserve">
+    <value>Press to configure</value>
+  </metadata>
   <data name="dbo_GetActivePlayersPositionHistoryTest_TestAction.SqlScript" xml:space="preserve">
     <value>-- database unit test for dbo.GetActivePlayersPositionHistory
-DECLARE ;
-
-SELECT ;
 
 SELECT *
-FROM   [dbo].[GetActivePlayersPositionHistory]();
+FROM   [dbo].[GetActivePlayersPositionHistory]()
 
 </value>
+  </data>
+  <data name="dbo_GetActivePlayersPositionHistoryTest_PretestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @OG_OO_CG_Id INT = 1
+DECLARE @OO_CO_OG_CG_OG INT = 2
+DECLARE @NOOP_Id INT = 3
+
+SET IDENTITY_INSERT Players ON;
+
+INSERT INTO Players (Id, Name) 
+VALUES (@OG_OO_CG_Id, 'OG_OO_CG'), (@OO_CO_OG_CG_OG, 'OO_CO_OG_CG_OG'), (@NOOP_Id, 'NOOP')
+
+SET IDENTITY_INSERT Players OFF;
+
+UPDATE Players SET Active = 0 WHERE Id = @NOOP_Id
+
+DECLARE @Round1_Id INT = 1;
+DECLARE @Round2_Id INT = 2;
+DECLARE @Round3_Id INT = 3;
+DECLARE @Round4_Id INT = 4;
+DECLARE @Round5_Id INT = 5;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic) VALUES (@Round1_Id, 'Round1'), (@Round2_Id, 'Round2'), (@Round3_Id, 'Round3'), (@Round4_Id, 'Round4'), (@Round5_Id, 'Round5')
+
+SET IDENTITY_INSERT Rounds OFF;
+
+SET IDENTITY_INSERT Matches ON;
+
+INSERT INTO Matches (Id, RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
+VALUES
+(1, @Round1_Id, @OG_OO_CG_Id, @NOOP_Id, @OO_CO_OG_CG_OG, @NOOP_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id),
+(2, @Round2_Id, @NOOP_Id, @NOOP_Id, @OG_OO_CG_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id, @OO_CO_OG_CG_OG, @NOOP_Id),
+(3, @Round3_Id, @OO_CO_OG_CG_OG, @NOOP_Id, @NOOP_Id, @NOOP_Id, @OG_OO_CG_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id),
+(4, @Round4_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id, @OO_CO_OG_CG_OG, @NOOP_Id, @NOOP_Id, @NOOP_Id),
+(5, @Round5_Id, @OO_CO_OG_CG_OG, @NOOP_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id, @NOOP_Id)
+
+SET IDENTITY_INSERT Matches OFF;</value>
+  </data>
+  <data name="dbo_GetActivePlayersPositionHistoryTest_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Matches
+
+DELETE FROM Rounds
+
+DELETE FROM Players</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

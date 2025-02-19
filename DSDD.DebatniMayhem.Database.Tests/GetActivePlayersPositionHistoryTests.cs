@@ -39,26 +39,49 @@ namespace DSDD.DebatniMayhem.Database.Tests
         {
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_GetActivePlayersPositionHistoryTest_TestAction;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GetActivePlayersPositionHistoryTests));
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.InconclusiveCondition inconclusiveCondition1;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_GetActivePlayersPositionHistoryTest_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_GetActivePlayersPositionHistoryTest_PosttestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition inactivePlayerIsNotPart;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ChecksumCondition checksumCondition1;
             this.dbo_GetActivePlayersPositionHistoryTestData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             dbo_GetActivePlayersPositionHistoryTest_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            inconclusiveCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.InconclusiveCondition();
-            // 
-            // dbo_GetActivePlayersPositionHistoryTestData
-            // 
-            this.dbo_GetActivePlayersPositionHistoryTestData.PosttestAction = null;
-            this.dbo_GetActivePlayersPositionHistoryTestData.PretestAction = null;
-            this.dbo_GetActivePlayersPositionHistoryTestData.TestAction = dbo_GetActivePlayersPositionHistoryTest_TestAction;
+            dbo_GetActivePlayersPositionHistoryTest_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            dbo_GetActivePlayersPositionHistoryTest_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            inactivePlayerIsNotPart = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
+            checksumCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ChecksumCondition();
             // 
             // dbo_GetActivePlayersPositionHistoryTest_TestAction
             // 
-            dbo_GetActivePlayersPositionHistoryTest_TestAction.Conditions.Add(inconclusiveCondition1);
+            dbo_GetActivePlayersPositionHistoryTest_TestAction.Conditions.Add(inactivePlayerIsNotPart);
+            dbo_GetActivePlayersPositionHistoryTest_TestAction.Conditions.Add(checksumCondition1);
             resources.ApplyResources(dbo_GetActivePlayersPositionHistoryTest_TestAction, "dbo_GetActivePlayersPositionHistoryTest_TestAction");
             // 
-            // inconclusiveCondition1
+            // dbo_GetActivePlayersPositionHistoryTest_PretestAction
             // 
-            inconclusiveCondition1.Enabled = true;
-            inconclusiveCondition1.Name = "inconclusiveCondition1";
+            resources.ApplyResources(dbo_GetActivePlayersPositionHistoryTest_PretestAction, "dbo_GetActivePlayersPositionHistoryTest_PretestAction");
+            // 
+            // dbo_GetActivePlayersPositionHistoryTestData
+            // 
+            this.dbo_GetActivePlayersPositionHistoryTestData.PosttestAction = dbo_GetActivePlayersPositionHistoryTest_PosttestAction;
+            this.dbo_GetActivePlayersPositionHistoryTestData.PretestAction = dbo_GetActivePlayersPositionHistoryTest_PretestAction;
+            this.dbo_GetActivePlayersPositionHistoryTestData.TestAction = dbo_GetActivePlayersPositionHistoryTest_TestAction;
+            // 
+            // dbo_GetActivePlayersPositionHistoryTest_PosttestAction
+            // 
+            resources.ApplyResources(dbo_GetActivePlayersPositionHistoryTest_PosttestAction, "dbo_GetActivePlayersPositionHistoryTest_PosttestAction");
+            // 
+            // inactivePlayerIsNotPart
+            // 
+            inactivePlayerIsNotPart.Enabled = true;
+            inactivePlayerIsNotPart.Name = "inactivePlayerIsNotPart";
+            inactivePlayerIsNotPart.ResultSet = 1;
+            inactivePlayerIsNotPart.RowCount = 2;
+            // 
+            // checksumCondition1
+            // 
+            checksumCondition1.Checksum = "290090745";
+            checksumCondition1.Enabled = true;
+            checksumCondition1.Name = "checksumCondition1";
         }
 
         #endregion
@@ -101,6 +124,7 @@ namespace DSDD.DebatniMayhem.Database.Tests
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
             }
         }
+
         private SqlDatabaseTestActions dbo_GetActivePlayersPositionHistoryTestData;
     }
 }

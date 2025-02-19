@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Rounds] (
     [Id]        INT            IDENTITY (1, 1) NOT NULL,
     [InfoSlide] NVARCHAR (MAX) NULL,
-    [Thesis]    NVARCHAR (MAX) NOT NULL,
-    [Ongoing]   BIT            NOT NULL,
+    [Topic]    NVARCHAR (MAX) NOT NULL,
+    [Ongoing]   BIT            NOT NULL DEFAULT 0,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
