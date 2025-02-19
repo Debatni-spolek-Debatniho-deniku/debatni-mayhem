@@ -61,6 +61,7 @@
     <Folder Include="Tables\" />
     <Folder Include="Views\" />
     <Folder Include="Functions\" />
+    <Folder Include="Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Players.sql" />
@@ -70,5 +71,7 @@
     <Build Include="Views\PlayerDetailLinks.sql" />
     <Build Include="Views\OngoingMatches.sql" />
     <Build Include="Functions\GetActivePlayersPositionHistory.sql" />
+    <Build Include="Procedures\CreateNewRound.sql" />
+    <Build Include="Functions\GetAvailableSlotsForRound.sql" />
   </ItemGroup>
 </Project>
