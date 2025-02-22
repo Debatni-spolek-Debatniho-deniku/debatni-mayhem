@@ -182,6 +182,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ActiveNextRoundTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="CreateNewRoundTests.cs">
       <SubType>Designer</SubType>
     </Compile>
@@ -194,6 +197,21 @@
     <Compile Include="GetAvailableSlotsForRoundTests.cs">
       <SubType>Designer</SubType>
     </Compile>
+    <Compile Include="GetExpectedScoreForTwoTeamsTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="GetExpectedSpeakerPointsTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="GetNewPlayerScoreTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="GetScoreChangeFromPointsTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="GetScoreChangeFromSpeakerPointsTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlDatabaseSetup.cs" />
   </ItemGroup>
@@ -202,6 +220,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ActiveNextRoundTests.resx">
+      <DependentUpon>ActiveNextRoundTests.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateNewRoundTests.resx">
       <DependentUpon>CreateNewRoundTests.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +234,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GetAvailableSlotsForRoundTests.resx">
       <DependentUpon>GetAvailableSlotsForRoundTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetExpectedScoreForTwoTeamsTests.resx">
+      <DependentUpon>GetExpectedScoreForTwoTeamsTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetExpectedSpeakerPointsTests.resx">
+      <DependentUpon>GetExpectedSpeakerPointsTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetNewPlayerScoreTests.resx">
+      <DependentUpon>GetNewPlayerScoreTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetScoreChangeFromPointsTests.resx">
+      <DependentUpon>GetScoreChangeFromPointsTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetScoreChangeFromSpeakerPointsTests.resx">
+      <DependentUpon>GetScoreChangeFromSpeakerPointsTests.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">

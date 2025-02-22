@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="596cbdbe-b87b-4200-aab5-3baa0e90e381" ChangeDateTime="02/22/2025 14:47:05">
+    <Property Name="ElementName" Value="[dbo].[ScoreToSpearPointsIntervals].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ScoreToSpearPointsIntervals]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UpToScore" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="166023d5-98db-4e64-90bd-be5c29964093" ChangeDateTime="02/22/2025 14:50:28">
+    <Property Name="ElementName" Value="[dbo].[ScoreToSpearPointsIntervals].[UpToScore]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ScoreToSpearPointsIntervals]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FromScore" />
+  </Operation>
+</Operations>

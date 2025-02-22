@@ -74,5 +74,15 @@
     <Build Include="Procedures\CreateNewRound.sql" />
     <Build Include="Functions\GetAvailableSlotsForRound.sql" />
     <Build Include="Procedures\DeleteRound.sql" />
+    <Build Include="Procedures\ActivateNextRound.sql" />
+    <Build Include="Functions\GetScoreChangeFromPoints.sql" />
+    <Build Include="Functions\GetExpectedScoreForTwoTeams.sql" />
+    <Build Include="Tables\ScoreToSpearPointsIntervals.sql" />
+    <Build Include="Functions\GetExpectedSpeakerPoints.sql" />
+    <Build Include="Functions\GetScoreChangeFromSpeakerPoints.sql" />
+    <Build Include="Functions\GetNewPlayerScore.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DSDD.DebatniMayhem.Database.refactorlog" />
   </ItemGroup>
 </Project>

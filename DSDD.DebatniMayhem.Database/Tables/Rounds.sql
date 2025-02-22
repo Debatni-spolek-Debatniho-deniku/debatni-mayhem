@@ -19,6 +19,5 @@ BEGIN
     IF (SELECT COUNT(*) FROM Rounds WHERE Ongoing = 1) > 1
     BEGIN
         THROW 50002, 'Only one row can have Ongoing = 1 at a time.', 1;
-        ROLLBACK TRANSACTION;
     END
 END;
