@@ -182,7 +182,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CreateNewRoundTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="DeleteRoundTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="GetActivePlayersPositionHistoryTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="GetAvailableSlotsForRoundTests.cs">
       <SubType>Designer</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,8 +202,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CreateNewRoundTests.resx">
+      <DependentUpon>CreateNewRoundTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteRoundTests.resx">
+      <DependentUpon>DeleteRoundTests.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GetActivePlayersPositionHistoryTests.resx">
       <DependentUpon>GetActivePlayersPositionHistoryTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetAvailableSlotsForRoundTests.resx">
+      <DependentUpon>GetAvailableSlotsForRoundTests.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">

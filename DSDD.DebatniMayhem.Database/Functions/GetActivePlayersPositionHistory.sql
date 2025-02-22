@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER FUNCTION GetActivePlayersPositionHistory() 
+﻿CREATE FUNCTION GetActivePlayersPositionHistory() 
 RETURNS @Result TABLE 
 (
 	PlayerId INT NOT NULL, 

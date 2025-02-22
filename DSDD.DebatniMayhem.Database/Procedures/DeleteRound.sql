@@ -1,0 +1,24 @@
+﻿CREATE PROCEDURE [dbo].[DeleteRound]
+	@Id int
+AS
+BEGIN
+	SET NOCOUNT ON
+	
+	BEGIN TRY
+		BEGIN TRANSACTION
+
+		DELETE FROM dbo.Matches where RoundId = @Id
+
+		DELETE FROM dbo.Rounds where Id = @Id
+		
+		COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+		DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE();
+
+		IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+		RAISERROR(@ErrorMessage, 16, 1)
+	END CATCH
+END

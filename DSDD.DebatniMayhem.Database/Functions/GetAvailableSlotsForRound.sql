@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER FUNCTION [dbo].[GetAvailableSlotsForRound]
+﻿CREATE FUNCTION [dbo].[GetAvailableSlotsForRound]
 (
 	@PlayerCount int
 )

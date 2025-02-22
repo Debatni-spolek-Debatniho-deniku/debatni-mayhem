@@ -73,5 +73,6 @@
     <Build Include="Functions\GetActivePlayersPositionHistory.sql" />
     <Build Include="Procedures\CreateNewRound.sql" />
     <Build Include="Functions\GetAvailableSlotsForRound.sql" />
+    <Build Include="Procedures\DeleteRound.sql" />
   </ItemGroup>
 </Project>
