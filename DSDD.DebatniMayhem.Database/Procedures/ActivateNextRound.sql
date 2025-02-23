@@ -2,11 +2,13 @@
 	@NextRoundId INT = NULL
 AS
 BEGIN
+	SET NOCOUNT ON
+
 	DECLARE @OngoingRoundId INT = (SELECT Id FROM Rounds WHERE Ongoing = 1)
 
 	IF @OngoingRoundId IS NULL AND @NextRoundId IS NULL
 	BEGIN
-		RAISERROR('There is no ongoing round to use as reference to active new round. You must specify ID of the round to active!', 16, 1);
+		RAISERROR('V danou chvíli neprobíhá žádné kolo, které lže použít jako referenci. Je nezbytné specifikovat ID kola, která má být aktivováno!', 16, 1);
 		RETURN
 	END
 
@@ -30,7 +32,7 @@ BEGIN
 		)
 	)
 	BEGIN
-		RAISERROR('Previously ongoing round has unscored mathces! All matches must be scored before activating next round!', 16, 1);
+		RAISERROR('Právě probíhající kolo ještě nebylo vyhodnoceno! Není možné aktivovat nové kolo.', 16, 1);
 		RETURN
 	END
 			
@@ -42,7 +44,7 @@ BEGIN
 
 	IF @NextRoundId IS NULL
 	BEGIN
-		RAISERROR('There is no next pending round! Either prepare next round first of specify ID of the next round!', 16, 1);
+		RAISERROR('Po právě probíhajícím kole nenásleduje žádné neaktivní kolo! Je potřeba založit nové kolo anebo specifikovat ID kola k aktivaci.', 16, 1);
 		RETURN
 	END
 

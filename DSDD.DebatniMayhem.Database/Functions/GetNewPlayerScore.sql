@@ -1,6 +1,7 @@
 ﻿CREATE FUNCTION [dbo].[GetNewPlayerScore]
 (
 	@ForPlayerScore int,
+
 	@ActualPoints int,
 	@ActualSpeakerPoints int,
 

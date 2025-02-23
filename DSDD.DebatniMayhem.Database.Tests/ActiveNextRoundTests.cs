@@ -49,13 +49,13 @@ namespace DSDD.DebatniMayhem.Database.Tests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OnogingRoundIsNewest_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OnogingRoundIsNewest_PosttestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ExplicitlyActivateRound_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ExplicitlyActivateRound_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition4;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ExplicitlyActivateRound_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ExplicitlyActivateRound_PosttestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ImplicitlyActivateRound_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition5;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ImplicitlyActivateRound_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ImplicitlyActivateRound_PosttestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition5;
             this.ImplicitNext_NoOngoingRoundData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.OngoingRoundNotScoredData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.OnogingRoundIsNewestData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -72,13 +72,13 @@ namespace DSDD.DebatniMayhem.Database.Tests
             OnogingRoundIsNewest_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             OnogingRoundIsNewest_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             ExplicitlyActivateRound_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            ExplicitlyActivateRound_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition4 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ExplicitlyActivateRound_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             ExplicitlyActivateRound_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             ImplicitlyActivateRound_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition5 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             ImplicitlyActivateRound_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             ImplicitlyActivateRound_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            scalarValueCondition5 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             // 
             // ImplicitNext_NoOngoingRound_TestAction
             // 
@@ -89,8 +89,8 @@ namespace DSDD.DebatniMayhem.Database.Tests
             // 
             scalarValueCondition1.ColumnNumber = 1;
             scalarValueCondition1.Enabled = true;
-            scalarValueCondition1.ExpectedValue = "There is no ongoing round to use as reference to active new round. You must speci" +
-                "fy ID of the round to active!";
+            scalarValueCondition1.ExpectedValue = "V danou chvíli neprobíhá žádné kolo, které lže použít jako referenci. Je nezbytné" +
+                " specifikovat ID kola, která má být aktivováno!";
             scalarValueCondition1.Name = "scalarValueCondition1";
             scalarValueCondition1.NullExpected = false;
             scalarValueCondition1.ResultSet = 1;
@@ -101,24 +101,11 @@ namespace DSDD.DebatniMayhem.Database.Tests
             OngoingRoundNotScored_TestAction.Conditions.Add(scalarValueCondition2);
             resources.ApplyResources(OngoingRoundNotScored_TestAction, "OngoingRoundNotScored_TestAction");
             // 
-            // ImplicitNext_NoOngoingRoundData
-            // 
-            this.ImplicitNext_NoOngoingRoundData.PosttestAction = null;
-            this.ImplicitNext_NoOngoingRoundData.PretestAction = null;
-            this.ImplicitNext_NoOngoingRoundData.TestAction = ImplicitNext_NoOngoingRound_TestAction;
-            // 
-            // OngoingRoundNotScoredData
-            // 
-            this.OngoingRoundNotScoredData.PosttestAction = OngoingRoundNotScored_PosttestAction;
-            this.OngoingRoundNotScoredData.PretestAction = OngoingRoundNotScored_PretestAction;
-            this.OngoingRoundNotScoredData.TestAction = OngoingRoundNotScored_TestAction;
-            // 
             // scalarValueCondition2
             // 
             scalarValueCondition2.ColumnNumber = 1;
             scalarValueCondition2.Enabled = true;
-            scalarValueCondition2.ExpectedValue = "Previously ongoing round has unscored mathces! All matches must be scored before " +
-                "activating next round!";
+            scalarValueCondition2.ExpectedValue = "Právě probíhající kolo ještě nebylo vyhodnoceno! Není možné aktivovat nové kolo.";
             scalarValueCondition2.Name = "scalarValueCondition2";
             scalarValueCondition2.NullExpected = false;
             scalarValueCondition2.ResultSet = 1;
@@ -132,12 +119,6 @@ namespace DSDD.DebatniMayhem.Database.Tests
             // 
             resources.ApplyResources(OngoingRoundNotScored_PosttestAction, "OngoingRoundNotScored_PosttestAction");
             // 
-            // OnogingRoundIsNewestData
-            // 
-            this.OnogingRoundIsNewestData.PosttestAction = OnogingRoundIsNewest_PosttestAction;
-            this.OnogingRoundIsNewestData.PretestAction = OnogingRoundIsNewest_PretestAction;
-            this.OnogingRoundIsNewestData.TestAction = OnogingRoundIsNewest_TestAction;
-            // 
             // OnogingRoundIsNewest_TestAction
             // 
             OnogingRoundIsNewest_TestAction.Conditions.Add(scalarValueCondition3);
@@ -147,8 +128,8 @@ namespace DSDD.DebatniMayhem.Database.Tests
             // 
             scalarValueCondition3.ColumnNumber = 1;
             scalarValueCondition3.Enabled = true;
-            scalarValueCondition3.ExpectedValue = "There is no next pending round! Either prepare next round first of specify ID of " +
-                "the next round!";
+            scalarValueCondition3.ExpectedValue = "Po právě probíhajícím kole nenásleduje žádné neaktivní kolo! Je potřeba založit n" +
+                "ové kolo anebo specifikovat ID kola k aktivaci.";
             scalarValueCondition3.Name = "scalarValueCondition3";
             scalarValueCondition3.NullExpected = false;
             scalarValueCondition3.ResultSet = 1;
@@ -162,20 +143,10 @@ namespace DSDD.DebatniMayhem.Database.Tests
             // 
             resources.ApplyResources(OnogingRoundIsNewest_PosttestAction, "OnogingRoundIsNewest_PosttestAction");
             // 
-            // ExplicitlyActivateRoundData
-            // 
-            this.ExplicitlyActivateRoundData.PosttestAction = ExplicitlyActivateRound_PosttestAction;
-            this.ExplicitlyActivateRoundData.PretestAction = ExplicitlyActivateRound_PretestAction;
-            this.ExplicitlyActivateRoundData.TestAction = ExplicitlyActivateRound_TestAction;
-            // 
             // ExplicitlyActivateRound_TestAction
             // 
             ExplicitlyActivateRound_TestAction.Conditions.Add(scalarValueCondition4);
             resources.ApplyResources(ExplicitlyActivateRound_TestAction, "ExplicitlyActivateRound_TestAction");
-            // 
-            // ExplicitlyActivateRound_PretestAction
-            // 
-            resources.ApplyResources(ExplicitlyActivateRound_PretestAction, "ExplicitlyActivateRound_PretestAction");
             // 
             // scalarValueCondition4
             // 
@@ -187,28 +158,18 @@ namespace DSDD.DebatniMayhem.Database.Tests
             scalarValueCondition4.ResultSet = 1;
             scalarValueCondition4.RowNumber = 1;
             // 
+            // ExplicitlyActivateRound_PretestAction
+            // 
+            resources.ApplyResources(ExplicitlyActivateRound_PretestAction, "ExplicitlyActivateRound_PretestAction");
+            // 
             // ExplicitlyActivateRound_PosttestAction
             // 
             resources.ApplyResources(ExplicitlyActivateRound_PosttestAction, "ExplicitlyActivateRound_PosttestAction");
-            // 
-            // ImplicitlyActivateRoundData
-            // 
-            this.ImplicitlyActivateRoundData.PosttestAction = ImplicitlyActivateRound_PosttestAction;
-            this.ImplicitlyActivateRoundData.PretestAction = ImplicitlyActivateRound_PretestAction;
-            this.ImplicitlyActivateRoundData.TestAction = ImplicitlyActivateRound_TestAction;
             // 
             // ImplicitlyActivateRound_TestAction
             // 
             ImplicitlyActivateRound_TestAction.Conditions.Add(scalarValueCondition5);
             resources.ApplyResources(ImplicitlyActivateRound_TestAction, "ImplicitlyActivateRound_TestAction");
-            // 
-            // ImplicitlyActivateRound_PretestAction
-            // 
-            resources.ApplyResources(ImplicitlyActivateRound_PretestAction, "ImplicitlyActivateRound_PretestAction");
-            // 
-            // ImplicitlyActivateRound_PosttestAction
-            // 
-            resources.ApplyResources(ImplicitlyActivateRound_PosttestAction, "ImplicitlyActivateRound_PosttestAction");
             // 
             // scalarValueCondition5
             // 
@@ -219,6 +180,44 @@ namespace DSDD.DebatniMayhem.Database.Tests
             scalarValueCondition5.NullExpected = false;
             scalarValueCondition5.ResultSet = 1;
             scalarValueCondition5.RowNumber = 1;
+            // 
+            // ImplicitlyActivateRound_PretestAction
+            // 
+            resources.ApplyResources(ImplicitlyActivateRound_PretestAction, "ImplicitlyActivateRound_PretestAction");
+            // 
+            // ImplicitlyActivateRound_PosttestAction
+            // 
+            resources.ApplyResources(ImplicitlyActivateRound_PosttestAction, "ImplicitlyActivateRound_PosttestAction");
+            // 
+            // ImplicitNext_NoOngoingRoundData
+            // 
+            this.ImplicitNext_NoOngoingRoundData.PosttestAction = null;
+            this.ImplicitNext_NoOngoingRoundData.PretestAction = null;
+            this.ImplicitNext_NoOngoingRoundData.TestAction = ImplicitNext_NoOngoingRound_TestAction;
+            // 
+            // OngoingRoundNotScoredData
+            // 
+            this.OngoingRoundNotScoredData.PosttestAction = OngoingRoundNotScored_PosttestAction;
+            this.OngoingRoundNotScoredData.PretestAction = OngoingRoundNotScored_PretestAction;
+            this.OngoingRoundNotScoredData.TestAction = OngoingRoundNotScored_TestAction;
+            // 
+            // OnogingRoundIsNewestData
+            // 
+            this.OnogingRoundIsNewestData.PosttestAction = OnogingRoundIsNewest_PosttestAction;
+            this.OnogingRoundIsNewestData.PretestAction = OnogingRoundIsNewest_PretestAction;
+            this.OnogingRoundIsNewestData.TestAction = OnogingRoundIsNewest_TestAction;
+            // 
+            // ExplicitlyActivateRoundData
+            // 
+            this.ExplicitlyActivateRoundData.PosttestAction = ExplicitlyActivateRound_PosttestAction;
+            this.ExplicitlyActivateRoundData.PretestAction = ExplicitlyActivateRound_PretestAction;
+            this.ExplicitlyActivateRoundData.TestAction = ExplicitlyActivateRound_TestAction;
+            // 
+            // ImplicitlyActivateRoundData
+            // 
+            this.ImplicitlyActivateRoundData.PosttestAction = ImplicitlyActivateRound_PosttestAction;
+            this.ImplicitlyActivateRoundData.PretestAction = ImplicitlyActivateRound_PretestAction;
+            this.ImplicitlyActivateRoundData.TestAction = ImplicitlyActivateRound_TestAction;
         }
 
         #endregion

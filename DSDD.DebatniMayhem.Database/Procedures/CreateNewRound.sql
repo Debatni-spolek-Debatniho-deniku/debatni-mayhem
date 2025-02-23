@@ -24,13 +24,13 @@ BEGIN
 	
 	IF @PlayerCount = 0
 	BEGIN
-		RAISERROR('There are no active players!', 16, 1);
+		RAISERROR('Nejsou žádní aktivní hráči!', 16, 1);
 		RETURN
 	END
 
 	IF @PlayerCount % 8 <> 0
 	BEGIN
-		RAISERROR('Number of active players must be divisible by 8!', 16, 1);
+		RAISERROR('Počet aktivních hráčů musí být dělitelný 8!', 16, 1);
 		RETURN
 	END
 	

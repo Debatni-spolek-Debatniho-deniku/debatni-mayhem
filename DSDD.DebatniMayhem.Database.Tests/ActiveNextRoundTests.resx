@@ -139,11 +139,6 @@ END CATCH
 
 </value>
   </data>
-  <data name="OngoingRoundNotScored_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM Matches
-DELETE FROM Rounds
-DELETE FROM Players</value>
-  </data>
   <data name="OngoingRoundNotScored_PretestAction.SqlScript" xml:space="preserve">
     <value>DECLARE @Player1 INT = 1
 DECLARE @Player2 INT = 2
@@ -185,8 +180,19 @@ VALUES
 
 SET IDENTITY_INSERT Matches OFF;</value>
   </data>
-  <data name="OnogingRoundIsNewest_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM Rounds</value>
+  <data name="OngoingRoundNotScored_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Matches
+DELETE FROM Rounds
+DELETE FROM Players</value>
+  </data>
+  <data name="OnogingRoundIsNewest_TestAction.SqlScript" xml:space="preserve">
+    <value>BEGIN TRY
+	EXECUTE [dbo].[ActivateRound];
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE()
+END CATCH
+</value>
   </data>
   <data name="OnogingRoundIsNewest_PretestAction.SqlScript" xml:space="preserve">
     <value>DECLARE @Round1_Id INT = 1;
@@ -198,27 +204,8 @@ INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 0), (@Roun
 
 SET IDENTITY_INSERT Rounds OFF;</value>
   </data>
-  <data name="OnogingRoundIsNewest_TestAction.SqlScript" xml:space="preserve">
-    <value>BEGIN TRY
-	EXECUTE [dbo].[ActivateRound];
-END TRY
-BEGIN CATCH
-	SELECT ERROR_MESSAGE()
-END CATCH
-</value>
-  </data>
-  <data name="ExplicitlyActivateRound_PosttestAction.SqlScript" xml:space="preserve">
+  <data name="OnogingRoundIsNewest_PosttestAction.SqlScript" xml:space="preserve">
     <value>DELETE FROM Rounds</value>
-  </data>
-  <data name="ExplicitlyActivateRound_PretestAction.SqlScript" xml:space="preserve">
-    <value>DECLARE @Round1_Id INT = 1;
-DECLARE @Round2_Id INT = 2;
-
-SET IDENTITY_INSERT Rounds ON;
-
-INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 0), (@Round2_Id, 'Round2', 1)
-
-SET IDENTITY_INSERT Rounds OFF;</value>
   </data>
   <data name="ExplicitlyActivateRound_TestAction.SqlScript" xml:space="preserve">
     <value>DECLARE @Round1_Id INT = 1;
@@ -230,8 +217,24 @@ SELECT @ActivatedRoundId
 
 </value>
   </data>
-  <data name="ImplicitlyActivateRound_PosttestAction.SqlScript" xml:space="preserve">
+  <data name="ExplicitlyActivateRound_PretestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Round1_Id INT = 1;
+DECLARE @Round2_Id INT = 2;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 0), (@Round2_Id, 'Round2', 1)
+
+SET IDENTITY_INSERT Rounds OFF;</value>
+  </data>
+  <data name="ExplicitlyActivateRound_PosttestAction.SqlScript" xml:space="preserve">
     <value>DELETE FROM Rounds</value>
+  </data>
+  <data name="ImplicitlyActivateRound_TestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @ActivatedRoundId INT;
+EXECUTE @ActivatedRoundId = [dbo].[ActivateRound];
+
+SELECT @ActivatedRoundId</value>
   </data>
   <data name="ImplicitlyActivateRound_PretestAction.SqlScript" xml:space="preserve">
     <value>DECLARE @Round1_Id INT = 1;
@@ -243,11 +246,8 @@ INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 1), (@Roun
 
 SET IDENTITY_INSERT Rounds OFF;</value>
   </data>
-  <data name="ImplicitlyActivateRound_TestAction.SqlScript" xml:space="preserve">
-    <value>DECLARE @ActivatedRoundId INT;
-EXECUTE @ActivatedRoundId = [dbo].[ActivateRound];
-
-SELECT @ActivatedRoundId</value>
+  <data name="ImplicitlyActivateRound_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Rounds</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

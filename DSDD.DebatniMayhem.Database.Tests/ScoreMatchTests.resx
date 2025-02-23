@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="dbo_ScoreMatchTest_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Configuration WHERE Name IN ('K', 'TenToOneOdds')
+
+DELETE FROM ScoreToSpearPointsIntervals
+
+DELETE FROM Matches
+DELETE FROM Rounds
+DELETE FROM Players</value>
+  </data>
+  <data name="dbo_ScoreMatchTest_PretestAction.SqlScript" xml:space="preserve">
+    <value>INSERT INTO Configuration (Name, VALUE)
+VALUES ('TenToOneOdds', 400)
+
+INSERT INTO Configuration (Name, VALUE)
+VALUES ('K', 60)
+
+INSERT INTO ScoreToSpearPointsIntervals (FromScore, SpearPoints) VALUES
+(0, 60),
+(500, 65),
+(1000, 70),
+(2000, 80)
+
+DECLARE @Player_OG_1 INT = 1
+DECLARE @Player_OG_2 INT = 2
+DECLARE @Player_OO_1 INT = 3
+DECLARE @Player_OO_2 INT = 4
+DECLARE @Player_CG_1 INT = 5
+DECLARE @Player_CG_2 INT = 6
+DECLARE @Player_CO_1 INT = 7
+DECLARE @Player_CO_2 INT = 8
+
+DECLARE @Player_OG_1_SP INT = 1
+DECLARE @Player_OG_2_SP INT = 2
+DECLARE @Player_OO_1_SP INT = 3
+DECLARE @Player_OO_2_SP INT = 4
+DECLARE @Player_CG_1_SP INT = 5
+DECLARE @Player_CG_2_SP INT = 6
+DECLARE @Player_CO_1_SP INT = 7
+DECLARE @Player_CO_2_SP INT = 8
+
+SET IDENTITY_INSERT Players ON
+
+INSERT INTO Players (Id, Name, Score, SpeakerPoints) 
+VALUES 
+(@Player_OG_1, 'OG_1', 1800, @Player_OG_1_SP), 
+(@Player_OG_2, 'OG_2', 1000, @Player_OG_2_SP), 
+(@Player_OO_1, 'OO_1', 1650, @Player_OO_1_SP), 
+(@Player_OO_2, 'OO_2', 1400, @Player_OO_2_SP), 
+(@Player_CG_1, 'CG_1', 1920, @Player_CG_1_SP), 
+(@Player_CG_2, 'CG_2', 1640, @Player_CG_2_SP), 
+(@Player_CO_1, 'CO_1', 1580, @Player_CO_1_SP), 
+(@Player_CO_2, 'CO_2', 1120, @Player_CO_2_SP)
+
+SET IDENTITY_INSERT Players OFF
+
+DECLARE @Round_Id INT = 1;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic) VALUES (@Round_Id, 'Round1')
+
+SET IDENTITY_INSERT Rounds OFF;
+
+SET IDENTITY_INSERT Matches ON;
+
+DECLARE @Match_Id INT = 1;
+
+INSERT INTO Matches (Id, RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
+VALUES
+(@Match_Id, @Round_Id, @Player_OG_1, @Player_OG_2, @Player_OO_1, @Player_OO_2, @Player_CG_1, @Player_CG_2, @Player_CO_1, @Player_CO_2)
+
+SET IDENTITY_INSERT Matches OFF;</value>
+  </data>
+  <metadata name="checkSum.Configuration" xml:space="preserve">
+    <value>Press to configure</value>
+  </metadata>
+  <data name="dbo_ScoreMatchTest_TestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Player_OG_1 INT = 1
+DECLARE @Player_OG_2 INT = 2
+DECLARE @Player_OO_1 INT = 3
+DECLARE @Player_OO_2 INT = 4
+DECLARE @Player_CG_1 INT = 5
+DECLARE @Player_CG_2 INT = 6
+DECLARE @Player_CO_1 INT = 7
+DECLARE @Player_CO_2 INT = 8
+
+DECLARE @Match_Id INT = 1;
+
+EXEC [dbo].[ScoreMatch] 
+	@MatchId = @Match_Id,
+
+	@OG_Points = 1,
+	@OO_Points = 3, 
+	@CG_Points = 2, 
+	@CO_Points = 0, 
+
+	@OG_1_SpeakerPoints = 80,
+	@OG_2_SpeakerPoints = 75,
+	@OO_1_SpeakerPoints = 78, 
+	@OO_2_SpeakerPoints = 72,
+	@CG_1_SpeakerPoints = 82, 
+	@CG_2_SpeakerPoints = 78,
+	@CO_1_SpeakerPoints = 71,
+	@CO_2_SpeakerPoints = 68;
+
+SELECT 
+Id, RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2, OG_Points, OO_Points, CG_Points, CO_Points, 
+OG_1_SpeakerPoints, OG_2_SpeakerPoints, OO_1_SpeakerPoints, OO_2_SpeakerPoints,
+CG_1_SpeakerPoints, CG_2_SpeakerPoints, CO_1_SpeakerPoints, CO_2_SpeakerPoints
+FROM Matches WHERE Id = @Match_Id
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OG_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OG_2
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OO_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OO_2
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CG_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CG_2
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CO_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CO_2</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>
