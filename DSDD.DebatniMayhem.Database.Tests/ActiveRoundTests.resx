@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ImplicitNext_NoOngoingRound_TestAction.SqlScript" xml:space="preserve">
+    <value>BEGIN TRY
+	EXECUTE [dbo].[ActivateRound];
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE()
+END CATCH
+
+
+</value>
+  </data>
+  <data name="OngoingRoundNotScored_TestAction.SqlScript" xml:space="preserve">
+    <value>BEGIN TRY
+	EXECUTE [dbo].[ActivateRound];
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE()
+END CATCH
+
+
+</value>
+  </data>
+  <data name="OngoingRoundNotScored_PretestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Player1 INT = 1
+DECLARE @Player2 INT = 2
+DECLARE @Player3 INT = 3
+DECLARE @Player4 INT = 4
+DECLARE @Player5 INT = 5
+DECLARE @Player6 INT = 6
+DECLARE @Player7 INT = 7
+DECLARE @Player8 INT = 8
+
+SET IDENTITY_INSERT Players ON;
+
+INSERT INTO Players (Id, Name) 
+VALUES 
+(@Player1, '1'), 
+(@Player2, '2'), 
+(@Player3, '3'), 
+(@Player4, '4'), 
+(@Player5, '5'), 
+(@Player6, '6'), 
+(@Player7, '7'), 
+(@Player8, '8')
+
+SET IDENTITY_INSERT Players OFF;
+
+DECLARE @Round1_Id INT = 1;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 1)
+
+SET IDENTITY_INSERT Rounds OFF;
+
+DECLARE @RoomId INT = 1;
+
+SET IDENTITY_INSERT Rooms ON;
+
+INSERT INTO Rooms (Id, Name) VALUES (@RoomId, '1')
+
+SET IDENTITY_INSERT Rooms OFF;
+
+SET IDENTITY_INSERT Matches ON;
+
+INSERT INTO Matches (Id, RoundId, RoomId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
+VALUES
+(1, @Round1_Id, @RoomId, @Player1, @Player2, @Player3, @Player4, @Player5, @Player6, @Player7, @Player8)
+
+SET IDENTITY_INSERT Matches OFF;</value>
+  </data>
+  <data name="OngoingRoundNotScored_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Matches
+DELETE FROM Rounds
+DELETE FROM Players
+DELETE FROM Rooms</value>
+  </data>
+  <data name="OnogingRoundIsNewest_TestAction.SqlScript" xml:space="preserve">
+    <value>BEGIN TRY
+	EXECUTE [dbo].[ActivateRound];
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE()
+END CATCH
+</value>
+  </data>
+  <data name="OnogingRoundIsNewest_PretestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Round1_Id INT = 1;
+DECLARE @Round2_Id INT = 2;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 0), (@Round2_Id, 'Round2', 1)
+
+SET IDENTITY_INSERT Rounds OFF;</value>
+  </data>
+  <data name="OnogingRoundIsNewest_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Rounds</value>
+  </data>
+  <data name="ExplicitlyActivateRound_TestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Round1_Id INT = 1;
+
+DECLARE @ActivatedRoundId INT;
+EXECUTE @ActivatedRoundId = [dbo].[ActivateRound] @Round1_Id;
+
+SELECT @ActivatedRoundId
+
+</value>
+  </data>
+  <data name="ExplicitlyActivateRound_PretestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Round1_Id INT = 1;
+DECLARE @Round2_Id INT = 2;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 0), (@Round2_Id, 'Round2', 1)
+
+SET IDENTITY_INSERT Rounds OFF;</value>
+  </data>
+  <data name="ExplicitlyActivateRound_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Rounds</value>
+  </data>
+  <data name="ImplicitlyActivateRound_TestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @ActivatedRoundId INT;
+EXECUTE @ActivatedRoundId = [dbo].[ActivateRound];
+
+SELECT @ActivatedRoundId</value>
+  </data>
+  <data name="ImplicitlyActivateRound_PretestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Round1_Id INT = 1;
+DECLARE @Round2_Id INT = 2;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic, Ongoing) VALUES (@Round1_Id, 'Round1', 1), (@Round2_Id, 'Round2', 0)
+
+SET IDENTITY_INSERT Rounds OFF;</value>
+  </data>
+  <data name="ImplicitlyActivateRound_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Rounds</value>
+  </data>
+  <data name="NewRoundHasHiddenTopic_TestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @RoundId INT = 1;
+
+EXEC dbo.ActivateRound @NextRoundId = @RoundId;
+
+SELECT ShowTopic FROM Rounds WHERE Id = @RoundId</value>
+  </data>
+  <data name="NewRoundHasHiddenTopic_PretestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @RoundId INT = 1;
+
+SET IDENTITY_INSERT Rounds ON;
+
+INSERT INTO Rounds (Id, Topic, Ongoing, ShowTopic) VALUES (@RoundId, 'Round1', 0, 1)
+
+SET IDENTITY_INSERT Rounds OFF;</value>
+  </data>
+  <data name="NewRoundHasHiddenTopic_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Rounds</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

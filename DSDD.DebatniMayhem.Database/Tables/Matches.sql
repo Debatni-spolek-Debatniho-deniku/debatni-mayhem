@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Matches] (
     [Id]      INT IDENTITY (1, 1) NOT NULL,
     [RoundId] INT NOT NULL,
+    [RoomId] INT NOT NULL, 
     [OG_1]    INT NOT NULL,
     [OG_2]    INT NOT NULL,
     [OO_1]    INT NOT NULL,
@@ -43,6 +44,7 @@
     CONSTRAINT [FK_Matches_OG_2] FOREIGN KEY ([OG_2]) REFERENCES [dbo].[Players] ([Id]),
     CONSTRAINT [FK_Matches_OO_1] FOREIGN KEY ([OO_1]) REFERENCES [dbo].[Players] ([Id]),
     CONSTRAINT [FK_Matches_OO_2] FOREIGN KEY ([OO_2]) REFERENCES [dbo].[Players] ([Id]),
-    CONSTRAINT [FK_Matches_Round] FOREIGN KEY ([RoundId]) REFERENCES [dbo].[Rounds] ([Id])
+    CONSTRAINT [FK_Matches_Round] FOREIGN KEY ([RoundId]) REFERENCES [dbo].[Rounds] ([Id]), 
+    CONSTRAINT [FK_Matches_Room] FOREIGN KEY ([RoomId]) REFERENCES [dbo].[Rooms] ([Id])
 );
 

@@ -117,10 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="dbo_CreateNewRoundTest_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM Matches
-DELETE FROM Rounds
-DELETE FROM Players</value>
+  <data name="dbo_CreateNewRoundTest_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for dbo.CreateNewRound
+EXEC [dbo].[CreateNewRound] @Topic = 'TEST TOPIC', @InfoSlide = 'TEST SLIDE';
+
+SELECT * FROM Matches
+</value>
   </data>
   <data name="dbo_CreateNewRoundTest_PretestAction.SqlScript" xml:space="preserve">
     <value>DECLARE @Player1 INT = 1
@@ -177,14 +179,22 @@ VALUES
 (@Player27, '27'), 
 (@Player28, '28') 
 
-SET IDENTITY_INSERT Players OFF</value>
-  </data>
-  <data name="dbo_CreateNewRoundTest_TestAction.SqlScript" xml:space="preserve">
-    <value>-- database unit test for dbo.CreateNewRound
-EXEC [dbo].[CreateNewRound] @Topic = 'TEST TOPIC', @InfoSlide = 'TEST SLIDE';
+SET IDENTITY_INSERT Players OFF
 
-SELECT * FROM Matches
-</value>
+SET IDENTITY_INSERT Rooms ON
+
+INSERT INTO Rooms (Id, Name) VALUES
+(1, '1'),
+(2, '2'),
+(3, '3')
+
+SET IDENTITY_INSERT Rooms OFF</value>
+  </data>
+  <data name="dbo_CreateNewRoundTest_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Matches
+DELETE FROM Rounds
+DELETE FROM Players
+DELETE FROM Rooms</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

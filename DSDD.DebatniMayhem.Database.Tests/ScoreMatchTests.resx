@@ -117,14 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="dbo_ScoreMatchTest_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM Configuration WHERE Name IN ('K', 'TenToOneOdds')
+  <metadata name="checkSum.Configuration" xml:space="preserve">
+    <value>Press to configure</value>
+  </metadata>
+  <data name="dbo_ScoreMatchTest_TestAction.SqlScript" xml:space="preserve">
+    <value>DECLARE @Player_OG_1 INT = 1
+DECLARE @Player_OG_2 INT = 2
+DECLARE @Player_OO_1 INT = 3
+DECLARE @Player_OO_2 INT = 4
+DECLARE @Player_CG_1 INT = 5
+DECLARE @Player_CG_2 INT = 6
+DECLARE @Player_CO_1 INT = 7
+DECLARE @Player_CO_2 INT = 8
 
-DELETE FROM ScoreToSpearPointsIntervals
+DECLARE @Match_Id INT = 1;
 
-DELETE FROM Matches
-DELETE FROM Rounds
-DELETE FROM Players</value>
+EXEC [dbo].[ScoreMatch] 
+	@MatchId = @Match_Id,
+
+	@OG_Points = 1,
+	@OO_Points = 3, 
+	@CG_Points = 2, 
+	@CO_Points = 0, 
+
+	@OG_1_SpeakerPoints = 80,
+	@OG_2_SpeakerPoints = 75,
+	@OO_1_SpeakerPoints = 78, 
+	@OO_2_SpeakerPoints = 72,
+	@CG_1_SpeakerPoints = 82, 
+	@CG_2_SpeakerPoints = 78,
+	@CO_1_SpeakerPoints = 71,
+	@CO_2_SpeakerPoints = 68;
+
+SELECT 
+Id, RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2, OG_Points, OO_Points, CG_Points, CO_Points, 
+OG_1_SpeakerPoints, OG_2_SpeakerPoints, OO_1_SpeakerPoints, OO_2_SpeakerPoints,
+CG_1_SpeakerPoints, CG_2_SpeakerPoints, CO_1_SpeakerPoints, CO_2_SpeakerPoints
+FROM Matches WHERE Id = @Match_Id
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OG_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OG_2
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OO_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OO_2
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CG_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CG_2
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CO_1
+
+SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CO_2</value>
   </data>
   <data name="dbo_ScoreMatchTest_PretestAction.SqlScript" xml:space="preserve">
     <value>INSERT INTO Configuration (Name, VALUE)
@@ -180,69 +225,33 @@ INSERT INTO Rounds (Id, Topic) VALUES (@Round_Id, 'Round1')
 
 SET IDENTITY_INSERT Rounds OFF;
 
+DECLARE @RoomId INT = 1;
+
+SET IDENTITY_INSERT Rooms ON;
+
+INSERT INTO Rooms (Id, Name) VALUES (@RoomId, '1')
+
+SET IDENTITY_INSERT Rooms OFF;
+
 SET IDENTITY_INSERT Matches ON;
 
 DECLARE @Match_Id INT = 1;
 
-INSERT INTO Matches (Id, RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
+INSERT INTO Matches (Id, RoundId, RoomId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
 VALUES
-(@Match_Id, @Round_Id, @Player_OG_1, @Player_OG_2, @Player_OO_1, @Player_OO_2, @Player_CG_1, @Player_CG_2, @Player_CO_1, @Player_CO_2)
+(@Match_Id, @Round_Id, @RoomId, @Player_OG_1, @Player_OG_2, @Player_OO_1, @Player_OO_2, @Player_CG_1, @Player_CG_2, @Player_CO_1, @Player_CO_2)
 
 SET IDENTITY_INSERT Matches OFF;</value>
   </data>
-  <metadata name="checkSum.Configuration" xml:space="preserve">
-    <value>Press to configure</value>
-  </metadata>
-  <data name="dbo_ScoreMatchTest_TestAction.SqlScript" xml:space="preserve">
-    <value>DECLARE @Player_OG_1 INT = 1
-DECLARE @Player_OG_2 INT = 2
-DECLARE @Player_OO_1 INT = 3
-DECLARE @Player_OO_2 INT = 4
-DECLARE @Player_CG_1 INT = 5
-DECLARE @Player_CG_2 INT = 6
-DECLARE @Player_CO_1 INT = 7
-DECLARE @Player_CO_2 INT = 8
+  <data name="dbo_ScoreMatchTest_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Configuration WHERE Name IN ('K', 'TenToOneOdds')
 
-DECLARE @Match_Id INT = 1;
+DELETE FROM ScoreToSpearPointsIntervals
 
-EXEC [dbo].[ScoreMatch] 
-	@MatchId = @Match_Id,
-
-	@OG_Points = 1,
-	@OO_Points = 3, 
-	@CG_Points = 2, 
-	@CO_Points = 0, 
-
-	@OG_1_SpeakerPoints = 80,
-	@OG_2_SpeakerPoints = 75,
-	@OO_1_SpeakerPoints = 78, 
-	@OO_2_SpeakerPoints = 72,
-	@CG_1_SpeakerPoints = 82, 
-	@CG_2_SpeakerPoints = 78,
-	@CO_1_SpeakerPoints = 71,
-	@CO_2_SpeakerPoints = 68;
-
-SELECT 
-Id, RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2, OG_Points, OO_Points, CG_Points, CO_Points, 
-OG_1_SpeakerPoints, OG_2_SpeakerPoints, OO_1_SpeakerPoints, OO_2_SpeakerPoints,
-CG_1_SpeakerPoints, CG_2_SpeakerPoints, CO_1_SpeakerPoints, CO_2_SpeakerPoints
-FROM Matches WHERE Id = @Match_Id
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OG_1
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OG_2
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OO_1
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_OO_2
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CG_1
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CG_2
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CO_1
-
-SELECT Id, Score, Points, SpeakerPoints FROM Players WHERE Id = @Player_CO_2</value>
+DELETE FROM Matches
+DELETE FROM Rounds
+DELETE FROM Players
+DELETE FROM Rooms</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

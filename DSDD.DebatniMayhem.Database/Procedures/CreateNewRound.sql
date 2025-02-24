@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[CreateNewRound]
 	@Topic VARCHAR(max),
-	@InfoSlide VARCHAR(max)
+	@InfoSlide VARCHAR(max) = NULL
 AS
 BEGIN
 	SET NOCOUNT ON
@@ -21,6 +21,7 @@ BEGIN
 	FROM GetActivePlayersPositionHistory()
 			
 	DECLARE @PlayerCount INT = (SELECT COUNT(PlayerId) FROM @Players);
+	DECLARE @MatchesCount INT = @PlayerCount / 8;
 	
 	IF @PlayerCount = 0
 	BEGIN
@@ -31,6 +32,15 @@ BEGIN
 	IF @PlayerCount % 8 <> 0
 	BEGIN
 		RAISERROR('Počet aktivních hráčů musí být dělitelný 8!', 16, 1);
+		RETURN
+	END
+
+	DECLARE @Rooms TABLE (RoomId INT)
+	INSERT INTO @Rooms SELECT Id FROM Rooms WHERE Active = 1
+
+	IF @MatchesCount > (SELECT COUNT(RoomId) FROM @Rooms)
+	BEGIN
+		RAISERROR('Není dostatečný počet aktivních místností pro toto kolo!', 16, 1);
 		RETURN
 	END
 	
@@ -91,13 +101,17 @@ BEGIN
 	
 	/* STAGE 4: Rozřazení hráčů do debat podale jejich slotů */
 
-	DECLARE @Matches TABLE (OG_1 INT, OG_2 INT, OO_1 INT, OO_2 INT, CG_1 INT, CG_2 INT, CO_1 INT, CO_2 INT)
+	DECLARE @Matches TABLE (RoomId INT, OG_1 INT, OG_2 INT, OO_1 INT, OO_2 INT, CG_1 INT, CG_2 INT, CO_1 INT, CO_2 INT)
 
-	DECLARE @MatchesCount INT = @PlayerCount / 8;
 	DECLARE @CurrentMatchIndex INT = 0;
 
 	WHILE @CurrentMatchIndex < @MatchesCount
 	BEGIN
+		DECLARE @RoomId INT = (SELECT TOP(1) RoomId FROM @Rooms ORDER BY NEWID())
+
+		-- každá místnost max 1x
+		DELETE FROM @Rooms WHERE RoomId = @RoomId
+
 		DECLARE @OG_1 INT = (SELECT TOP(1) PlayerId FROM @PlayerSlots WHERE Slot = 'OG_1')
 		DECLARE @OG_2 INT = (SELECT TOP(1) PlayerId FROM @PlayerSlots WHERE Slot = 'OG_2')
 		DECLARE @OO_1 INT = (SELECT TOP(1) PlayerId FROM @PlayerSlots WHERE Slot = 'OO_1')
@@ -110,14 +124,12 @@ BEGIN
 		-- každý hrýč je v PlayerSlots nejvýše 1x
 		DELETE FROM @PlayerSlots WHERE PlayerId IN (@OG_1, @OG_2, @OO_1, @OO_2, @CG_1, @CG_2, @CO_1, @CO_2)
 
-		INSERT INTO @Matches (OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
-		VALUES (@OG_1, @OG_2, @OO_1, @OO_2, @CG_1, @CG_2, @CO_1, @CO_2)
+		INSERT INTO @Matches (RoomId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
+		VALUES (@RoomId, @OG_1, @OG_2, @OO_1, @OO_2, @CG_1, @CG_2, @CO_1, @CO_2)
 
 		SET @CurrentMatchIndex = @CurrentMatchIndex + 1
 	END
 		
-	SELECT * FROM @Matches
-	
 	/* STAGE 4: Vytvoření kola a jednotlivých debat */
 
 	BEGIN TRY
@@ -127,8 +139,8 @@ BEGIN
 		
 		DECLARE @RoundId INT = (SELECT MAX(Id) FROM Rounds)
 
-		INSERT INTO Matches (RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
-		SELECT @RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2
+		INSERT INTO Matches (RoundId, RoomId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
+		SELECT @RoundId, RoomId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2
 		FROM @Matches
 
 		COMMIT TRANSACTION

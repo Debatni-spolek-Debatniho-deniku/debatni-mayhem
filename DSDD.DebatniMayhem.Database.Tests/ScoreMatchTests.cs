@@ -38,26 +38,26 @@ namespace DSDD.DebatniMayhem.Database.Tests
         private void InitializeComponent()
         {
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_ScoreMatchTest_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_ScoreMatchTest_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_ScoreMatchTest_PosttestAction;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScoreMatchTests));
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ChecksumCondition checkSum;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_ScoreMatchTest_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_ScoreMatchTest_PosttestAction;
             this.dbo_ScoreMatchTestData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             dbo_ScoreMatchTest_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            checkSum = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ChecksumCondition();
             dbo_ScoreMatchTest_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             dbo_ScoreMatchTest_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            checkSum = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ChecksumCondition();
-            // 
-            // dbo_ScoreMatchTestData
-            // 
-            this.dbo_ScoreMatchTestData.PosttestAction = dbo_ScoreMatchTest_PosttestAction;
-            this.dbo_ScoreMatchTestData.PretestAction = dbo_ScoreMatchTest_PretestAction;
-            this.dbo_ScoreMatchTestData.TestAction = dbo_ScoreMatchTest_TestAction;
             // 
             // dbo_ScoreMatchTest_TestAction
             // 
             dbo_ScoreMatchTest_TestAction.Conditions.Add(checkSum);
             resources.ApplyResources(dbo_ScoreMatchTest_TestAction, "dbo_ScoreMatchTest_TestAction");
+            // 
+            // checkSum
+            // 
+            checkSum.Checksum = "1675868850";
+            checkSum.Enabled = true;
+            checkSum.Name = "checkSum";
             // 
             // dbo_ScoreMatchTest_PretestAction
             // 
@@ -67,11 +67,11 @@ namespace DSDD.DebatniMayhem.Database.Tests
             // 
             resources.ApplyResources(dbo_ScoreMatchTest_PosttestAction, "dbo_ScoreMatchTest_PosttestAction");
             // 
-            // checkSum
+            // dbo_ScoreMatchTestData
             // 
-            checkSum.Checksum = "1675868850";
-            checkSum.Enabled = true;
-            checkSum.Name = "checkSum";
+            this.dbo_ScoreMatchTestData.PosttestAction = dbo_ScoreMatchTest_PosttestAction;
+            this.dbo_ScoreMatchTestData.PretestAction = dbo_ScoreMatchTest_PretestAction;
+            this.dbo_ScoreMatchTestData.TestAction = dbo_ScoreMatchTest_TestAction;
         }
 
         #endregion

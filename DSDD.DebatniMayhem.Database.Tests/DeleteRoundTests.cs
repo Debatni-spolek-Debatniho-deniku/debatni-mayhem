@@ -38,37 +38,23 @@ namespace DSDD.DebatniMayhem.Database.Tests
         private void InitializeComponent()
         {
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_DeleteRoundTest_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_DeleteRoundTest_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_DeleteRoundTest_PosttestAction;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteRoundTests));
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition preExec;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition postExec;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_DeleteRoundTest_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_DeleteRoundTest_PosttestAction;
             this.dbo_DeleteRoundTestData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             dbo_DeleteRoundTest_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            dbo_DeleteRoundTest_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            dbo_DeleteRoundTest_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             preExec = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             postExec = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            // 
-            // dbo_DeleteRoundTestData
-            // 
-            this.dbo_DeleteRoundTestData.PosttestAction = dbo_DeleteRoundTest_PosttestAction;
-            this.dbo_DeleteRoundTestData.PretestAction = dbo_DeleteRoundTest_PretestAction;
-            this.dbo_DeleteRoundTestData.TestAction = dbo_DeleteRoundTest_TestAction;
+            dbo_DeleteRoundTest_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            dbo_DeleteRoundTest_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             // 
             // dbo_DeleteRoundTest_TestAction
             // 
             dbo_DeleteRoundTest_TestAction.Conditions.Add(preExec);
             dbo_DeleteRoundTest_TestAction.Conditions.Add(postExec);
             resources.ApplyResources(dbo_DeleteRoundTest_TestAction, "dbo_DeleteRoundTest_TestAction");
-            // 
-            // dbo_DeleteRoundTest_PretestAction
-            // 
-            resources.ApplyResources(dbo_DeleteRoundTest_PretestAction, "dbo_DeleteRoundTest_PretestAction");
-            // 
-            // dbo_DeleteRoundTest_PosttestAction
-            // 
-            resources.ApplyResources(dbo_DeleteRoundTest_PosttestAction, "dbo_DeleteRoundTest_PosttestAction");
             // 
             // preExec
             // 
@@ -83,6 +69,20 @@ namespace DSDD.DebatniMayhem.Database.Tests
             postExec.Name = "postExec";
             postExec.ResultSet = 2;
             postExec.RowCount = 0;
+            // 
+            // dbo_DeleteRoundTest_PretestAction
+            // 
+            resources.ApplyResources(dbo_DeleteRoundTest_PretestAction, "dbo_DeleteRoundTest_PretestAction");
+            // 
+            // dbo_DeleteRoundTest_PosttestAction
+            // 
+            resources.ApplyResources(dbo_DeleteRoundTest_PosttestAction, "dbo_DeleteRoundTest_PosttestAction");
+            // 
+            // dbo_DeleteRoundTestData
+            // 
+            this.dbo_DeleteRoundTestData.PosttestAction = dbo_DeleteRoundTest_PosttestAction;
+            this.dbo_DeleteRoundTestData.PretestAction = dbo_DeleteRoundTest_PretestAction;
+            this.dbo_DeleteRoundTestData.TestAction = dbo_DeleteRoundTest_TestAction;
         }
 
         #endregion

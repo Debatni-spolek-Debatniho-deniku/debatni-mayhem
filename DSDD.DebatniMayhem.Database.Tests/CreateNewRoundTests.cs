@@ -38,26 +38,27 @@ namespace DSDD.DebatniMayhem.Database.Tests
         private void InitializeComponent()
         {
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_CreateNewRoundTest_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_CreateNewRoundTest_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_CreateNewRoundTest_PosttestAction;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateNewRoundTests));
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition numberOfMatches;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_CreateNewRoundTest_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_CreateNewRoundTest_PosttestAction;
             this.dbo_CreateNewRoundTestData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             dbo_CreateNewRoundTest_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            numberOfMatches = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             dbo_CreateNewRoundTest_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             dbo_CreateNewRoundTest_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            numberOfMatches = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            // 
-            // dbo_CreateNewRoundTestData
-            // 
-            this.dbo_CreateNewRoundTestData.PosttestAction = dbo_CreateNewRoundTest_PosttestAction;
-            this.dbo_CreateNewRoundTestData.PretestAction = dbo_CreateNewRoundTest_PretestAction;
-            this.dbo_CreateNewRoundTestData.TestAction = dbo_CreateNewRoundTest_TestAction;
             // 
             // dbo_CreateNewRoundTest_TestAction
             // 
             dbo_CreateNewRoundTest_TestAction.Conditions.Add(numberOfMatches);
             resources.ApplyResources(dbo_CreateNewRoundTest_TestAction, "dbo_CreateNewRoundTest_TestAction");
+            // 
+            // numberOfMatches
+            // 
+            numberOfMatches.Enabled = true;
+            numberOfMatches.Name = "numberOfMatches";
+            numberOfMatches.ResultSet = 1;
+            numberOfMatches.RowCount = 3;
             // 
             // dbo_CreateNewRoundTest_PretestAction
             // 
@@ -67,12 +68,11 @@ namespace DSDD.DebatniMayhem.Database.Tests
             // 
             resources.ApplyResources(dbo_CreateNewRoundTest_PosttestAction, "dbo_CreateNewRoundTest_PosttestAction");
             // 
-            // numberOfMatches
+            // dbo_CreateNewRoundTestData
             // 
-            numberOfMatches.Enabled = true;
-            numberOfMatches.Name = "numberOfMatches";
-            numberOfMatches.ResultSet = 1;
-            numberOfMatches.RowCount = 3;
+            this.dbo_CreateNewRoundTestData.PosttestAction = dbo_CreateNewRoundTest_PosttestAction;
+            this.dbo_CreateNewRoundTestData.PretestAction = dbo_CreateNewRoundTest_PretestAction;
+            this.dbo_CreateNewRoundTestData.TestAction = dbo_CreateNewRoundTest_TestAction;
         }
 
         #endregion

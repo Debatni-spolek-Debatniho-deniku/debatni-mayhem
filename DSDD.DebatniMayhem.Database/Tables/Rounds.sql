@@ -3,6 +3,7 @@
     [InfoSlide] NVARCHAR (MAX) NULL,
     [Topic]    NVARCHAR (MAX) NOT NULL,
     [Ongoing]   BIT            NOT NULL DEFAULT 0,
+    [ShowTopic] BIT NOT NULL DEFAULT 0,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
@@ -18,6 +19,6 @@ BEGIN
     -- Check if there are multiple rows with Ongoing = 1
     IF (SELECT COUNT(*) FROM Rounds WHERE Ongoing = 1) > 1
     BEGIN
-        THROW 50002, 'Only one row can have Ongoing = 1 at a time.', 1;
+        RAISERROR('Není možné aktivovat více než 1 kolo současně!', 16, 1);
     END
 END;

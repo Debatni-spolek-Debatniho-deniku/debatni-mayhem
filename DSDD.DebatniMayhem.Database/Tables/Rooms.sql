@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Rooms]
+(
+	[Id] INT NOT NULL IDENTITY (1, 1) PRIMARY KEY, 
+    [Name] NCHAR(10) NOT NULL, 
+    [Active] BIT NOT NULL DEFAULT 1
+)

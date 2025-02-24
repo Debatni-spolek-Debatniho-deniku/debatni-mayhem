@@ -117,10 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="dbo_DeleteRoundTest_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM Matches
-DELETE FROM Rounds
-DELETE FROM Players</value>
+  <data name="dbo_DeleteRoundTest_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for dbo.DeleteRound
+
+DECLARE @Round1_Id INT = 1;
+
+SELECT * FROM Matches WHERE RoundId = @Round1_Id
+
+EXEC DeleteRound @Round1_Id;
+
+SELECT * FROM Matches WHERE RoundId = @Round1_Id
+
+</value>
   </data>
   <data name="dbo_DeleteRoundTest_PretestAction.SqlScript" xml:space="preserve">
     <value>SET IDENTITY_INSERT Players ON;
@@ -172,29 +180,32 @@ INSERT INTO Rounds (Id, Topic) VALUES (@Round1_Id, 'Round1'), (@Round2_Id, 'Roun
 
 SET IDENTITY_INSERT Rounds OFF;
 
+DECLARE @Room1_Id INT = 1;
+DECLARE @Room2_Id INT = 2;
+
+SET IDENTITY_INSERT Rooms ON;
+
+INSERT INTO Rooms (Id, Name) VALUES 
+(@Room1_Id, '1'), (@Room2_Id, '2')
+
+SET IDENTITY_INSERT Rooms OFF;
+
 SET IDENTITY_INSERT Matches ON;
 
-INSERT INTO Matches (Id, RoundId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
+INSERT INTO Matches (Id, RoundId, RoomId, OG_1, OG_2, OO_1, OO_2, CG_1, CG_2, CO_1, CO_2)
 VALUES
-(1, @Round1_Id, @Player1, @Player2, @Player3, @Player4, @Player5, @Player6, @Player7, @Player8),
-(2, @Round1_Id, @Player11, @Player12, @Player13, @Player14, @Player15, @Player16, @Player17, @Player18),
-(3, @Round2_Id, @Player1, @Player2, @Player3, @Player4, @Player5, @Player6, @Player7, @Player8),
-(4, @Round2_Id, @Player11, @Player12, @Player13, @Player14, @Player15, @Player16, @Player17, @Player18)
+(1, @Round1_Id, @Room1_Id, @Player1, @Player2, @Player3, @Player4, @Player5, @Player6, @Player7, @Player8),
+(2, @Round1_Id, @Room2_Id, @Player11, @Player12, @Player13, @Player14, @Player15, @Player16, @Player17, @Player18),
+(3, @Round2_Id, @Room1_Id, @Player1, @Player2, @Player3, @Player4, @Player5, @Player6, @Player7, @Player8),
+(4, @Round2_Id, @Room2_Id, @Player11, @Player12, @Player13, @Player14, @Player15, @Player16, @Player17, @Player18)
 
 SET IDENTITY_INSERT Matches OFF;</value>
   </data>
-  <data name="dbo_DeleteRoundTest_TestAction.SqlScript" xml:space="preserve">
-    <value>-- database unit test for dbo.DeleteRound
-
-DECLARE @Round1_Id INT = 1;
-
-SELECT * FROM Matches WHERE RoundId = @Round1_Id
-
-EXEC DeleteRound @Round1_Id;
-
-SELECT * FROM Matches WHERE RoundId = @Round1_Id
-
-</value>
+  <data name="dbo_DeleteRoundTest_PosttestAction.SqlScript" xml:space="preserve">
+    <value>DELETE FROM Matches
+DELETE FROM Rounds
+DELETE FROM Players
+DELETE FROM Rooms</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

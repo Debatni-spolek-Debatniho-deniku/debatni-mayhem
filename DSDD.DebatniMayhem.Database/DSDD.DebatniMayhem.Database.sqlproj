@@ -59,7 +59,6 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables\" />
-    <Folder Include="Views\" />
     <Folder Include="Functions\" />
     <Folder Include="Procedures" />
   </ItemGroup>
@@ -68,13 +67,11 @@
     <Build Include="Tables\Configuration.sql" />
     <Build Include="Tables\Rounds.sql" />
     <Build Include="Tables\Matches.sql" />
-    <Build Include="Views\PlayerDetailLinks.sql" />
-    <Build Include="Views\OngoingMatches.sql" />
     <Build Include="Functions\GetActivePlayersPositionHistory.sql" />
     <Build Include="Procedures\CreateNewRound.sql" />
     <Build Include="Functions\GetAvailableSlotsForRound.sql" />
     <Build Include="Procedures\DeleteRound.sql" />
-    <Build Include="Procedures\ActivateNextRound.sql" />
+    <Build Include="Procedures\ActivateRound.sql" />
     <Build Include="Functions\GetScoreChangeFromPoints.sql" />
     <Build Include="Functions\GetExpectedScoreForTwoTeams.sql" />
     <Build Include="Tables\ScoreToSpearPointsIntervals.sql" />
@@ -82,6 +79,8 @@
     <Build Include="Functions\GetScoreChangeFromSpeakerPoints.sql" />
     <Build Include="Functions\GetNewPlayerScore.sql" />
     <Build Include="Procedures\ScoreMatch.sql" />
+    <Build Include="Tables\Rooms.sql" />
+    <Build Include="Procedures\RevealActiveRoundTopic.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DSDD.DebatniMayhem.Database.refactorlog" />

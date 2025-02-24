@@ -1,10 +1,83 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Aktuální debata";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+
 </div>
+
+@if (Model.Round is null) {
+    <p>V tuto chvíli neprobíhá žádné kolo turnaje.</p>
+}
+else
+{
+    <div class="w-100">
+        <h4>Teze</h4>
+
+        @if (!Model.Round.ShowTopic) {
+
+            <p class="alert alert-warning" role="alert">
+                Teze je skrytá!
+            </p>
+        } 
+        else {
+            <div class="card bg-light mb-3">
+                <div class="card-body text-white bg-dark">
+                    <h6 class="card-text">@Model.Round.Topic</h6>
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.Round.InfoSlide))
+                {
+                    <div class="card-header">
+                        <strong>Info slide:</strong> <br />
+                        @Model.Round.InfoSlide
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="w-100">
+        <h4>Rozdělení do debat</h4>
+
+        <div class="w-100 overflow-auto">
+            <table class="table table-bordered" style="min-width: 50rem">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 12%">Místnost</th>
+                        <th scope="col" style="width: 22%">OG</th>
+                        <th scope="col" style="width: 22%">OO</th>
+                        <th scope="col" style="width: 22%">CG</th>
+                        <th scope="col" style="width: 22%">CO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (IndexModel.OngoingMatch match in Model.Round.Matches)
+                    {
+                        <tr>
+                            <th scope="row">@match.Room</th>
+                            <td>
+                                @match.Og1<br />
+                                @match.Og2
+                            </td>
+                            <td>
+                                @match.Oo1<br />
+                                @match.Oo2
+                            </td>
+                            <td>
+                                @match.Cg1<br />
+                                @match.Cg2
+                            </td>
+                            <td>
+                                @match.Co1<br />
+                                @match.Co2
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}
