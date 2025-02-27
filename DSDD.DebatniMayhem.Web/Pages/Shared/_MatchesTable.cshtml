@@ -1,0 +1,39 @@
+﻿@model DSDD.DebatniMayhem.Web.Pages.Shared.MatchesTableModel
+
+<div class="w-100 overflow-auto">
+    <table class="table table-bordered" style="min-width: 50rem">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 12%">Místnost</th>
+                <th scope="col" style="width: 22%">OG</th>
+                <th scope="col" style="width: 22%">OO</th>
+                <th scope="col" style="width: 22%">CG</th>
+                <th scope="col" style="width: 22%">CO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MatchesTableModel.Match match in Model.Matches)
+            {
+                <tr>
+                    <th scope="row">@match.Room</th>
+                    <td>
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Og1)<br />
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Og2)
+                    </td>
+                    <td>
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Oo1)<br />
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Oo2)
+                    </td>
+                    <td>
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Cg1)<br />
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Cg2)
+                    </td>
+                    <td>
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Co1)<br />
+                        @await Html.PartialAsync("_MatchesTablePlayer", match.Co2)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

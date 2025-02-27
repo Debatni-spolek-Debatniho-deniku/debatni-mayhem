@@ -123,7 +123,7 @@ SELECT [dbo].[GetScoreChangeFromSpeakerPoints](80, 1500);
 SELECT [dbo].[GetScoreChangeFromSpeakerPoints](60, 2000);</value>
   </data>
   <data name="dbo_GetScoreChangeFromSpeakerPointsTest_PretestAction.SqlScript" xml:space="preserve">
-    <value>INSERT INTO ScoreToSpearPointsIntervals (FromScore, SpearPoints) VALUES
+    <value>INSERT INTO ScoreToSpeakerPointsIntervals (FromScore, SpeakerPoints) VALUES
 (0, 60),
 (500, 65),
 (1000, 70),
@@ -133,7 +133,7 @@ INSERT INTO Configuration (Name, VALUE)
 VALUES ('K', 60)</value>
   </data>
   <data name="dbo_GetScoreChangeFromSpeakerPointsTest_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM ScoreToSpearPointsIntervals
+    <value>DELETE FROM ScoreToSpeakerPointsIntervals
 
 DELETE FROM Configuration WHERE Name = 'K'</value>
   </data>

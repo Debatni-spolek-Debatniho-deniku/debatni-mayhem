@@ -134,14 +134,14 @@ VALUES ('TenToOneOdds', 400)
 INSERT INTO Configuration (Name, VALUE)
 VALUES ('K', 60)
 
-INSERT INTO ScoreToSpearPointsIntervals (FromScore, SpearPoints) VALUES
+INSERT INTO ScoreToSpeakerPointsIntervals (FromScore, SpeakerPoints) VALUES
 (0, 60),
 (500, 65),
 (1000, 70),
 (2000, 80)</value>
   </data>
   <data name="dbo_GetNewPlayerScoreTest_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM ScoreToSpearPointsIntervals
+    <value>DELETE FROM ScoreToSpeakerPointsIntervals
 
 DELETE FROM Configuration WHERE Name = 'K'
 DELETE FROM Configuration WHERE Name = 'TenToOneOdds'

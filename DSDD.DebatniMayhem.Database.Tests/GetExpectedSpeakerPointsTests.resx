@@ -127,7 +127,7 @@ SELECT [dbo].[GetExpectedSpeakerPoints](999999)
 </value>
   </data>
   <data name="dbo_GetExpectedSpeakerPointsTest_PretestAction.SqlScript" xml:space="preserve">
-    <value>INSERT INTO ScoreToSpearPointsIntervals (FromScore, SpearPoints) VALUES
+    <value>INSERT INTO ScoreToSpeakerPointsIntervals (FromScore, SpeakerPoints) VALUES
 (0, 60),
 (500, 65),
 (1000, 70),
@@ -135,7 +135,7 @@ SELECT [dbo].[GetExpectedSpeakerPoints](999999)
 </value>
   </data>
   <data name="dbo_GetExpectedSpeakerPointsTest_PosttestAction.SqlScript" xml:space="preserve">
-    <value>DELETE FROM ScoreToSpearPointsIntervals</value>
+    <value>DELETE FROM ScoreToSpeakerPointsIntervals</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -1,5 +1,7 @@
 using DSDD.DebatniMayhem.Web.DataAccess;
+using DSDD.DebatniMayhem.Web.Pages.Shared;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace DSDD.DebatniMayhem.Web.Pages;
 
@@ -12,81 +14,39 @@ public class IndexModel : PageModel
         _dbContext = dbContext;
     }
 
-    public void OnGet()
+    public async Task OnGetAsync()
     {
-        Round = _dbContext
+        Round = await _dbContext
             .Rounds
             .Where(r => r.Ongoing)
             .Select(r => new OngoingRound(
-                r.Topic,
-                r.InfoSlide,
-                r.ShowTopic,
-                r.Matches.Select(m => new OngoingMatch(
+                new (r.Topic, r.InfoSlide, r.ShowTopic),
+                new(r.Matches.Select(m => new MatchesTableModel.Match(
                     m.Room.Name,
-                    m.Og1Navigation.Name,
-                    m.Og2Navigation.Name,
-                    m.Oo1Navigation.Name,
-                    m.Oo2Navigation.Name,
-                    m.Cg1Navigation.Name,
-                    m.Cg2Navigation.Name,
-                    m.Co1Navigation.Name,
-                    m.Co2Navigation.Name))))
-            .SingleOrDefault();
-
+                    new(m.Og1Navigation.Name, false, m.Og1Navigation.Placeholder),
+                    new(m.Og2Navigation.Name, false, m.Og2Navigation.Placeholder),
+                    new(m.Oo1Navigation.Name, false, m.Oo1Navigation.Placeholder),
+                    new(m.Oo2Navigation.Name, false, m.Oo2Navigation.Placeholder),
+                    new(m.Cg1Navigation.Name, false, m.Cg1Navigation.Placeholder),
+                    new(m.Cg2Navigation.Name, false, m.Cg2Navigation.Placeholder),
+                    new(m.Co1Navigation.Name, false, m.Co1Navigation.Placeholder),
+                    new(m.Co2Navigation.Name, false, m.Co2Navigation.Placeholder)))))
+            )
+            .SingleOrDefaultAsync();
     }
 
     private readonly MayhemDbContext _dbContext;
 
     public class OngoingRound
     {
-        public string Topic { get; }
+        public ActiveTopicModel Topic { get; }
+        
+        public MatchesTableModel Matches { get; }
 
-        public string? InfoSlide { get; }
-
-        public bool ShowTopic { get; }
-
-        public IReadOnlyList<OngoingMatch> Matches { get; }
-
-        public OngoingRound(string topic, string? infoSlide,bool showTopic, IEnumerable<OngoingMatch> matches)
+        public OngoingRound(ActiveTopicModel topic, MatchesTableModel matches)
         {
             Topic = topic;
-            InfoSlide = infoSlide;
-            ShowTopic = showTopic;
-            Matches = matches.ToArray();
-        }
-    }
-
-    public class OngoingMatch
-    {
-        public string Room { get; }
-
-        public string Og1 { get; }
-
-        public string Og2 { get; }
-
-        public string Oo1 { get; }
-
-        public string Oo2 { get; }
-
-        public string Cg1 { get; }
-
-        public string Cg2 { get; }
-
-        public string Co1 { get; }
-
-        public string Co2 { get; }
-
-        public OngoingMatch(string room, string og1, string og2, string oo1, string oo2, string cg1, string cg2, string co1, string co2)
-        {
-            Room = room;
-            Og1 = og1;
-            Og2 = og2;
-            Oo1 = oo1;
-            Oo2 = oo2;
-            Cg1 = cg1;
-            Cg2 = cg2;
-            Co1 = co1;
-            Co2 = co2;
+            Matches = matches;
         }
     }
 }

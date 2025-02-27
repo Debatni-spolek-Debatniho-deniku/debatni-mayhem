@@ -178,7 +178,7 @@ VALUES ('TenToOneOdds', 400)
 INSERT INTO Configuration (Name, VALUE)
 VALUES ('K', 60)
 
-INSERT INTO ScoreToSpearPointsIntervals (FromScore, SpearPoints) VALUES
+INSERT INTO ScoreToSpeakerPointsIntervals (FromScore, SpeakerPoints) VALUES
 (0, 60),
 (500, 65),
 (1000, 70),
@@ -246,7 +246,7 @@ SET IDENTITY_INSERT Matches OFF;</value>
   <data name="dbo_ScoreMatchTest_PosttestAction.SqlScript" xml:space="preserve">
     <value>DELETE FROM Configuration WHERE Name IN ('K', 'TenToOneOdds')
 
-DELETE FROM ScoreToSpearPointsIntervals
+DELETE FROM ScoreToSpeakerPointsIntervals
 
 DELETE FROM Matches
 DELETE FROM Rounds

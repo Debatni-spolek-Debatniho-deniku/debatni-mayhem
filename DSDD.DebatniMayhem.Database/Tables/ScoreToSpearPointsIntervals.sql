@@ -1,9 +1,9 @@
-﻿CREATE TABLE [dbo].[ScoreToSpearPointsIntervals]
+﻿CREATE TABLE [dbo].[ScoreToSpeakerPointsIntervals]
 (
 	[FromScore] INT NOT NULL, 
-    [SpearPoints] INT NOT NULL 
+    [SpeakerPoints] INT NOT NULL 
 )
 
 GO
 
-CREATE UNIQUE INDEX [IX_ScoreToSpearPointsIntervals_FromScore] ON [dbo].[ScoreToSpearPointsIntervals] ([FromScore])
+CREATE UNIQUE INDEX [IX_ScoreToSpeakerPointsIntervals_FromScore] ON [dbo].[ScoreToSpeakerPointsIntervals] ([FromScore])

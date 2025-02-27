@@ -49,7 +49,6 @@ BEGIN
 	DECLARE @AvailableSlots TABLE (Slot VARCHAR(4));
 	INSERT INTO @AvailableSlots 
 	SELECT Slot FROM GetAvailableSlotsForRound(@PlayerCount)
-	-- Jinak první hráč dostane OG_1 apod...
 	ORDER BY NEWID()
 		
 	/* STAGE 3: Přířazení hráčů ke slotům které ještě nehrály, popř. náhodně */
@@ -66,7 +65,7 @@ BEGIN
 	-- Dání priority hráči s nižším počtem volných slotů zajistí vyšší férovost
 	DECLARE PlayersCursor CURSOR FOR
 	SELECT PlayerId, OG_Played, OO_PLayed, CG_Played, CO_Played FROM @Players
-	ORDER BY UnplayedPositions ASC
+	ORDER BY UnplayedPositions ASC, NEWID()
 
 	OPEN PlayersCursor
 

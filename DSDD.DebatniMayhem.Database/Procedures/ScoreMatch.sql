@@ -20,6 +20,26 @@ BEGIN
 
 	/* STAGE 1: Validace */
 
+	IF EXISTS (SELECT * FROM Matches WHERE Id = @MatchId AND (
+			OG_Points IS NOT NULL OR
+			OO_Points IS NOT NULL OR
+			CG_Points IS NOT NULL OR
+			CO_Points IS NOT NULL OR
+
+			OG_1_SpeakerPoints IS NOT NULL OR
+			OG_2_SpeakerPoints IS NOT NULL OR
+			OO_1_SpeakerPoints IS NOT NULL OR
+			OO_2_SpeakerPoints IS NOT NULL OR
+			CG_1_SpeakerPoints IS NOT NULL OR
+			CG_2_SpeakerPoints IS NOT NULL OR
+			CO_1_SpeakerPoints IS NOT NULL OR
+			CO_2_SpeakerPoints IS NOT NULL
+		))
+	BEGIN
+		RAISERROR('Tato debata už má skóre!', 16, 1)
+		RETURN
+	END
+
 	IF (@OG_Points < 0) OR (3 < @OG_Points)
 	OR (@OO_Points < 0) OR (3 < @OO_Points)
 	OR (@CG_Points < 0) OR (3 < @CG_Points)

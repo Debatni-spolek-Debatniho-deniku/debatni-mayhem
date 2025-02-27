@@ -1,0 +1,16 @@
+﻿@model DSDD.DebatniMayhem.Web.Pages.Shared.MatchesTablePlayerModel
+
+@if (!Model.Placeholder) {
+    @if (Model.Bold)
+    {
+        <strong>@Model.Name</strong>
+    }
+    else
+    {
+        @Model.Name
+    }
+} 
+else
+{
+    @Consts.PLACEHOLDER_PLAYER_NAME
+}

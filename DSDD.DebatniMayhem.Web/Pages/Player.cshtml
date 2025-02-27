@@ -1,0 +1,76 @@
+﻿@page "/player/{publicId:guid}"
+@model DSDD.DebatniMayhem.Web.Pages.PlayerModel
+@using DSDD.DebatniMayhem.Web.Pages.Shared
+@{
+    ViewData["Title"] = Model.Player?.Name ?? "Detail hráče";
+}
+
+@if (Model.Player?.OngoingRound is { } ongoingRound)
+{
+    <div class="w-100">
+        <h4>Probíhající debata</h4>
+
+        @await Html.PartialAsync("_ActiveTopic", ongoingRound.Topic)
+
+        @await Html.PartialAsync("_MatchesTable", new MatchesTableModel([ongoingRound.Match]))
+
+    <hr/>
+    </div>
+}
+
+<h3>@Model.Player?.Name</h3>
+
+<div class="w-100">
+
+    <h5>Statistiky</h5>
+
+    <table class="table table-bordered" style="min-width: 50rem">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 33%">Skóre</th>
+                <th scope="col" style="width: 33%">Body</th>
+                <th scope="col" style="width: 33%">Rečnické body</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Player?.Score</td>
+                <td>@Model.Player?.Points</td>
+                <td>@Model.Player?.SpeakerPoints</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h5>Historie</h5>
+    <table class="table table-bordered" style="min-width: 50rem">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 30%">Teze</th>
+                <th scope="col" style="width: 15%">Pozice</th>
+                <th scope="col" style="width: 15%">Body</th>
+                <th scope="col" style="width: 15%">Body řečníka</th>
+                <th scope="col" style="width: 25%">Spoluhráč</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PlayerModel.PlayerHistoryMatchDetail match in Model.Player?.MatchHistory 
+            ?? Enumerable.Empty<PlayerModel.PlayerHistoryMatchDetail>()) 
+            {
+                <tr>
+                    @if (!string.IsNullOrEmpty(@match.InfoSlide))
+                    {
+                        <td data-toggle="tooltip" data-placement="top" title="@match.InfoSlide">@match.Topic</td>
+                    }
+                    else
+                    {
+                        <td>@match.Topic</td>
+                    }
+                    <td>@match.Position</td>
+                    <td>@match.Points</td>
+                    <td>@match.SpeakerPoints</td>
+                    <td>@(match.Teammate ?? Consts.PLACEHOLDER_PLAYER_NAME)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
