@@ -75,5 +75,6 @@ jobs:
           action: 'publish'
           build-arguments: '-c Release'
           arguments: '/p:DropObjectsNotInSource=false'
+          skip-firewall-check: true
 
 
