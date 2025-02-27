@@ -1,3 +1,4 @@
+using Azure.Monitor.OpenTelemetry.AspNetCore;
 using DSDD.DebatniMayhem.Web.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,8 @@ builder
         options.UseSqlServer(builder.Configuration.GetConnectionString("MayhemDatabase"));
     })
     .AddRazorPages();
+
+builder.Services.AddOpenTelemetry().UseAzureMonitor();
 
 var app = builder.Build();
 
