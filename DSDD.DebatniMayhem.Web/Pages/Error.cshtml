@@ -4,14 +4,13 @@
     ViewData["Title"] = "Chyba";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">Chyba :(</h1>
+<h2 class="text-danger">Najdi si někoho z TABu a předej mu následující údaje.</h2>
 
-@if (!string.IsNullOrEmpty(Model.RequestId))
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
-
-<p>@(Model.Error ?? "Something went wrong :(")</p>
+<p>
+    @if (!string.IsNullOrEmpty(Model.RequestId))
+    {       
+        <strong>Request ID:</strong> <code>@Model.RequestId</code><br/>   
+    }
+    <strong>Text chyby:</strong> <code>@(Model.Error ?? "¯\\_(ツ)_/¯")</code>
+</p>
