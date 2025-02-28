@@ -15,5 +15,7 @@ public partial class Round
 
     public bool ShowTopic { get; set; }
 
+    public bool ShowInfoSlide { get; set; }
+
     public virtual ICollection<Match> Matches { get; set; } = new List<Match>();
 }

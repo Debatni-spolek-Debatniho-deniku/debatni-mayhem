@@ -20,7 +20,7 @@ public class IndexModel : PageModel
             .Rounds
             .Where(r => r.Ongoing)
             .Select(r => new OngoingRound(
-                new (r.Topic, r.InfoSlide, r.ShowTopic),
+                new (r.Topic, r.InfoSlide, r.ShowTopic, r.ShowInfoSlide),
                 new(r.Matches.Select(m => new MatchesTableModel.Match(
                     m.Room.Name,
                     new(m.Og1Navigation.Name, false, m.Og1Navigation.Placeholder),

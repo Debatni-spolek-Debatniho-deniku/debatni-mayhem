@@ -33,5 +33,6 @@
     <Build Include="Procedures\ScoreMatch.sql" />
     <Build Include="Tables\Rooms.sql" />
     <Build Include="Procedures\RevealActiveRoundTopic.sql" />
+    <Build Include="Procedures\RevealActiveRoundInfoSlide.sql" />
   </ItemGroup>
 </Project>

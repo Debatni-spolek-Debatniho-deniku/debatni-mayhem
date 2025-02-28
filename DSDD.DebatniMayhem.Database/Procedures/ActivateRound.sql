@@ -54,7 +54,7 @@ BEGIN
 		IF @OngoingRoundId IS NOT NULL
 			UPDATE Rounds SET Ongoing = 0 WHERE Id = @OngoingRoundId
 
-		UPDATE Rounds SET Ongoing = 1, ShowTopic = 0 WHERE Id = @NextRoundId
+		UPDATE Rounds SET Ongoing = 1, ShowTopic = 0, ShowInfoSlide = 0 WHERE Id = @NextRoundId
 
 		COMMIT TRANSACTION
 

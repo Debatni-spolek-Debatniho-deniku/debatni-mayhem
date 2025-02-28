@@ -1,4 +1,4 @@
-using DSDD.DebatniMayhem.Web.DataAccess;
+﻿using DSDD.DebatniMayhem.Web.DataAccess;
 using DSDD.DebatniMayhem.Web.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -47,6 +47,7 @@ public class PlayerModel : PageModel
                 m.Round.InfoSlide,
                 m.Round.Ongoing,
                 m.Round.ShowTopic,
+                m.Round.ShowInfoSlide,
 
                 RoomName = m.Room.Name,
 
@@ -105,7 +106,7 @@ public class PlayerModel : PageModel
             playerMathces.SingleOrDefault(m => m.Ongoing) is not { } ongoingMatch
                 ? null
                 : new(
-                    new(ongoingMatch.Topic, ongoingMatch.InfoSlide, ongoingMatch.ShowTopic),
+                    new(ongoingMatch.Topic, ongoingMatch.InfoSlide, ongoingMatch.ShowTopic, ongoingMatch.ShowInfoSlide),
                     new(ongoingMatch.RoomName,
                         new(ongoingMatch.Og1Name, ongoingMatch.IsOg1, ongoingMatch.Og1Placeholder),
                         new(ongoingMatch.Og2Name, ongoingMatch.IsOg2, ongoingMatch.Og2Placeholder),
@@ -116,30 +117,32 @@ public class PlayerModel : PageModel
                         new(ongoingMatch.Co1Name, ongoingMatch.IsCo1, ongoingMatch.Co1Placeholder),
                         new(ongoingMatch.Co2Name, ongoingMatch.IsCo2, ongoingMatch.Co2Placeholder))),
             playerMathces.Where(m => !m.Ongoing).Select(m =>
-            {
-                (string position, string? teammate, int? points, int? speakerPoints) = m switch
                 {
-                    { IsOg1: true } _m => ("OG", getTeammateIfNotPlaceholder(_m.Og2Name, _m.Og2Placeholder), _m.OgPoints, _m.Og1SpeakerPoints),
-                    { IsOg2: true } _m => ("OG", getTeammateIfNotPlaceholder(_m.Og1Name, _m.Og1Placeholder), _m.OgPoints, _m.Og1SpeakerPoints),
-                    { IsOo1: true } _m => ("OO", getTeammateIfNotPlaceholder(_m.Oo2Name, _m.Oo2Placeholder),  _m.OoPoints, _m.Oo1SpeakerPoints),
-                    { IsOo2: true } _m => ("OO", getTeammateIfNotPlaceholder(_m.Oo1Name, _m.Oo1Placeholder), _m.OoPoints, _m.Oo1SpeakerPoints),
+                    (string position, string? teammate, int? points, int? speakerPoints) = m switch
+                    {
+                        { IsOg1: true } _m => ("OG", getTeammateIfNotPlaceholder(_m.Og2Name, _m.Og2Placeholder), _m.OgPoints, _m.Og1SpeakerPoints),
+                        { IsOg2: true } _m => ("OG", getTeammateIfNotPlaceholder(_m.Og1Name, _m.Og1Placeholder), _m.OgPoints, _m.Og2SpeakerPoints),
+                        { IsOo1: true } _m => ("OO", getTeammateIfNotPlaceholder(_m.Oo2Name, _m.Oo2Placeholder), _m.OoPoints, _m.Oo1SpeakerPoints),
+                        { IsOo2: true } _m => ("OO", getTeammateIfNotPlaceholder(_m.Oo1Name, _m.Oo1Placeholder), _m.OoPoints, _m.Oo2SpeakerPoints),
 
-                    { IsCg1: true } _m => ("CG", getTeammateIfNotPlaceholder(_m.Cg2Name, _m.Cg2Placeholder), _m.CgPoints, _m.Cg1SpeakerPoints),
-                    { IsCg2: true } _m => ("CG", getTeammateIfNotPlaceholder(_m.Cg1Name, _m.Cg1Placeholder), _m.CgPoints, _m.Cg1SpeakerPoints),
-                    { IsCo1: true } _m => ("CO", getTeammateIfNotPlaceholder(_m.Co2Name, _m.Co2Placeholder), _m.CoPoints, _m.Co1SpeakerPoints),
-                    { IsCo2: true } _m => ("CO", getTeammateIfNotPlaceholder(_m.Co1Name, _m.Co1Placeholder), _m.CoPoints, _m.Co1SpeakerPoints),
+                        { IsCg1: true } _m => ("CG", getTeammateIfNotPlaceholder(_m.Cg2Name, _m.Cg2Placeholder), _m.CgPoints, _m.Cg1SpeakerPoints),
+                        { IsCg2: true } _m => ("CG", getTeammateIfNotPlaceholder(_m.Cg1Name, _m.Cg1Placeholder), _m.CgPoints, _m.Cg2SpeakerPoints),
+                        { IsCo1: true } _m => ("CO", getTeammateIfNotPlaceholder(_m.Co2Name, _m.Co2Placeholder), _m.CoPoints, _m.Co1SpeakerPoints),
+                        { IsCo2: true } _m => ("CO", getTeammateIfNotPlaceholder(_m.Co1Name, _m.Co1Placeholder), _m.CoPoints, _m.Co2SpeakerPoints),
 
-                    _ => throw new InvalidOperationException("Invalid match position")
-                };
+                        _ => throw new InvalidOperationException("Invalid match position")
+                    };
 
-                return new PlayerHistoryMatchDetail(
-                    m.Topic,
-                    m.InfoSlide,
-                    teammate,
-                    position,
-                    points,
-                    speakerPoints);
-            })
+                    return new PlayerHistoryMatchDetail(
+                        m.Topic,
+                        m.InfoSlide,
+                        teammate,
+                        position,
+                        points,
+                        speakerPoints);
+                })
+                // Neaktivní kolo může být připraveno do budoucna, ukazujeme jen ty kola co už mají hodnocení
+                .Where(d => d.Points is {} || d.SpeakerPoints is {})
         );
 
         string? getTeammateIfNotPlaceholder(string name, bool isPlaceholder) => isPlaceholder ? null : name;

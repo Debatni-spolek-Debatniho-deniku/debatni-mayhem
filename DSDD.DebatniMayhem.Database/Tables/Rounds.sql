@@ -4,6 +4,7 @@
     [Topic]    NVARCHAR (MAX) NOT NULL,
     [Ongoing]   BIT            NOT NULL DEFAULT 0,
     [ShowTopic] BIT NOT NULL DEFAULT 0,
+    [ShowInfoSlide] BIT NOT NULL DEFAULT 0 CHECK (([InfoSlide] IS NOT NULL AND [ShowInfoSlide] IN (0,1)) OR ([InfoSlide] IS NULL AND [ShowInfoSlide] = 0)), 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

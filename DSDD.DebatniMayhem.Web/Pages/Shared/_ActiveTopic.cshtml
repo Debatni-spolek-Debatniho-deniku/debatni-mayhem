@@ -7,13 +7,17 @@
         Teze je skrytá!
     </p>
 }
-else
+
+@if (Model.ShowInfoSlide || Model.ShowTopic)
 {
     <div class="card bg-light mb-3">
-        <div class="card-body text-white bg-dark">
-            <h6 class="card-text">@Model.Topic</h6>
-        </div>
-        @if (!string.IsNullOrWhiteSpace(Model.InfoSlide))
+        @if (Model.ShowTopic)
+        {
+            <div class="card-body text-white bg-dark">
+                <h6 class="card-text">@Model.Topic</h6>
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.InfoSlide) && (Model.ShowInfoSlide || Model.ShowTopic))
         {
             <div class="card-header">
                 <strong>Info slide:</strong> <br />

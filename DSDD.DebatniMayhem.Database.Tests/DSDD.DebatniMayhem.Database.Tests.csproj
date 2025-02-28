@@ -216,6 +216,9 @@
       <SubType>Designer</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RevealActiveRoundInfoSlideTests.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="RevealActiveRoundTopicTests.cs">
       <SubType>Designer</SubType>
     </Compile>
@@ -262,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlayersTests.resx">
       <DependentUpon>PlayersTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RevealActiveRoundInfoSlideTests.resx">
+      <DependentUpon>RevealActiveRoundInfoSlideTests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RevealActiveRoundTopicTests.resx">
       <DependentUpon>RevealActiveRoundTopicTests.cs</DependentUpon>

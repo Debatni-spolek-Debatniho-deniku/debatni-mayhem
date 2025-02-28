@@ -56,16 +56,17 @@ namespace DSDD.DebatniMayhem.Database.Tests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition5;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ImplicitlyActivateRound_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ImplicitlyActivateRound_PosttestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NewRoundHasHiddenTopic_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NewRoundHasHiddenTopicAndInfoSlide_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition6;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NewRoundHasHiddenTopic_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NewRoundHasHiddenTopic_PosttestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NewRoundHasHiddenTopicAndInfoSlide_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NewRoundHasHiddenTopicAndInfoSlide_PosttestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition7;
             this.ImplicitNext_NoOngoingRoundData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.OngoingRoundNotScoredData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.OnogingRoundIsNewestData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ExplicitlyActivateRoundData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ImplicitlyActivateRoundData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.NewRoundHasHiddenTopicData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.NewRoundHasHiddenTopicAndInfoSlideData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             ImplicitNext_NoOngoingRound_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             OngoingRoundNotScored_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
@@ -84,10 +85,11 @@ namespace DSDD.DebatniMayhem.Database.Tests
             scalarValueCondition5 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             ImplicitlyActivateRound_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             ImplicitlyActivateRound_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            NewRoundHasHiddenTopic_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            NewRoundHasHiddenTopicAndInfoSlide_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition6 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            NewRoundHasHiddenTopic_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            NewRoundHasHiddenTopic_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            NewRoundHasHiddenTopicAndInfoSlide_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            NewRoundHasHiddenTopicAndInfoSlide_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition7 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             // 
             // ImplicitNext_NoOngoingRound_TestAction
             // 
@@ -198,10 +200,11 @@ namespace DSDD.DebatniMayhem.Database.Tests
             // 
             resources.ApplyResources(ImplicitlyActivateRound_PosttestAction, "ImplicitlyActivateRound_PosttestAction");
             // 
-            // NewRoundHasHiddenTopic_TestAction
+            // NewRoundHasHiddenTopicAndInfoSlide_TestAction
             // 
-            NewRoundHasHiddenTopic_TestAction.Conditions.Add(scalarValueCondition6);
-            resources.ApplyResources(NewRoundHasHiddenTopic_TestAction, "NewRoundHasHiddenTopic_TestAction");
+            NewRoundHasHiddenTopicAndInfoSlide_TestAction.Conditions.Add(scalarValueCondition6);
+            NewRoundHasHiddenTopicAndInfoSlide_TestAction.Conditions.Add(scalarValueCondition7);
+            resources.ApplyResources(NewRoundHasHiddenTopicAndInfoSlide_TestAction, "NewRoundHasHiddenTopicAndInfoSlide_TestAction");
             // 
             // scalarValueCondition6
             // 
@@ -213,13 +216,13 @@ namespace DSDD.DebatniMayhem.Database.Tests
             scalarValueCondition6.ResultSet = 1;
             scalarValueCondition6.RowNumber = 1;
             // 
-            // NewRoundHasHiddenTopic_PretestAction
+            // NewRoundHasHiddenTopicAndInfoSlide_PretestAction
             // 
-            resources.ApplyResources(NewRoundHasHiddenTopic_PretestAction, "NewRoundHasHiddenTopic_PretestAction");
+            resources.ApplyResources(NewRoundHasHiddenTopicAndInfoSlide_PretestAction, "NewRoundHasHiddenTopicAndInfoSlide_PretestAction");
             // 
-            // NewRoundHasHiddenTopic_PosttestAction
+            // NewRoundHasHiddenTopicAndInfoSlide_PosttestAction
             // 
-            resources.ApplyResources(NewRoundHasHiddenTopic_PosttestAction, "NewRoundHasHiddenTopic_PosttestAction");
+            resources.ApplyResources(NewRoundHasHiddenTopicAndInfoSlide_PosttestAction, "NewRoundHasHiddenTopicAndInfoSlide_PosttestAction");
             // 
             // ImplicitNext_NoOngoingRoundData
             // 
@@ -251,11 +254,21 @@ namespace DSDD.DebatniMayhem.Database.Tests
             this.ImplicitlyActivateRoundData.PretestAction = ImplicitlyActivateRound_PretestAction;
             this.ImplicitlyActivateRoundData.TestAction = ImplicitlyActivateRound_TestAction;
             // 
-            // NewRoundHasHiddenTopicData
+            // NewRoundHasHiddenTopicAndInfoSlideData
             // 
-            this.NewRoundHasHiddenTopicData.PosttestAction = NewRoundHasHiddenTopic_PosttestAction;
-            this.NewRoundHasHiddenTopicData.PretestAction = NewRoundHasHiddenTopic_PretestAction;
-            this.NewRoundHasHiddenTopicData.TestAction = NewRoundHasHiddenTopic_TestAction;
+            this.NewRoundHasHiddenTopicAndInfoSlideData.PosttestAction = NewRoundHasHiddenTopicAndInfoSlide_PosttestAction;
+            this.NewRoundHasHiddenTopicAndInfoSlideData.PretestAction = NewRoundHasHiddenTopicAndInfoSlide_PretestAction;
+            this.NewRoundHasHiddenTopicAndInfoSlideData.TestAction = NewRoundHasHiddenTopicAndInfoSlide_TestAction;
+            // 
+            // scalarValueCondition7
+            // 
+            scalarValueCondition7.ColumnNumber = 1;
+            scalarValueCondition7.Enabled = true;
+            scalarValueCondition7.ExpectedValue = "false";
+            scalarValueCondition7.Name = "scalarValueCondition7";
+            scalarValueCondition7.NullExpected = false;
+            scalarValueCondition7.ResultSet = 1;
+            scalarValueCondition7.RowNumber = 1;
         }
 
         #endregion
@@ -391,9 +404,9 @@ namespace DSDD.DebatniMayhem.Database.Tests
             }
         }
         [TestMethod()]
-        public void NewRoundHasHiddenTopic()
+        public void NewRoundHasHiddenTopicAndInfoSlide()
         {
-            SqlDatabaseTestActions testActions = this.NewRoundHasHiddenTopicData;
+            SqlDatabaseTestActions testActions = this.NewRoundHasHiddenTopicAndInfoSlideData;
             // Execute the pre-test script
             // 
             System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
@@ -423,6 +436,6 @@ namespace DSDD.DebatniMayhem.Database.Tests
         private SqlDatabaseTestActions OnogingRoundIsNewestData;
         private SqlDatabaseTestActions ExplicitlyActivateRoundData;
         private SqlDatabaseTestActions ImplicitlyActivateRoundData;
-        private SqlDatabaseTestActions NewRoundHasHiddenTopicData;
+        private SqlDatabaseTestActions NewRoundHasHiddenTopicAndInfoSlideData;
     }
 }

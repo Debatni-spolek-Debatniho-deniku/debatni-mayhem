@@ -37,40 +37,44 @@ namespace DSDD.DebatniMayhem.Database.Tests
         /// </summary>
         private void InitializeComponent()
         {
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_RevealActiveRoundTopicTest_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_RevealActiveRoundTopicTest_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction dbo_RevealActiveRoundTopicTest_PosttestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundDoesNotHaveInfoSlide_TestAction;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RevealActiveRoundTopicTests));
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition1;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundDoesNotHaveInfoSlide_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundDoesNotHaveInfoSlide_PosttestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NoOngoingRound_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition2;
-            this.dbo_RevealActiveRoundTopicTestData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundHasInfoSlide_NotRevealed_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition3;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundHasInfoSlide_NotRevealed_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundHasInfoSlide_Revealed_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition4;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundHasInfoSlide_Revealed_PosttestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundHasInfoSlide_NotRevealed_PosttestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction OngoingRoundHasInfoSlide_Revealed_PretestAction;
+            this.OngoingRoundDoesNotHaveInfoSlideData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.NoOngoingRoundData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            dbo_RevealActiveRoundTopicTest_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            dbo_RevealActiveRoundTopicTest_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            dbo_RevealActiveRoundTopicTest_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            this.OngoingRoundHasInfoSlide_NotRevealedData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.OngoingRoundHasInfoSlide_RevealedData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            OngoingRoundDoesNotHaveInfoSlide_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            OngoingRoundDoesNotHaveInfoSlide_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            OngoingRoundDoesNotHaveInfoSlide_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             NoOngoingRound_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            OngoingRoundHasInfoSlide_NotRevealed_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition3 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            OngoingRoundHasInfoSlide_NotRevealed_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            OngoingRoundHasInfoSlide_Revealed_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition4 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            OngoingRoundHasInfoSlide_Revealed_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            OngoingRoundHasInfoSlide_NotRevealed_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            OngoingRoundHasInfoSlide_Revealed_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             // 
-            // dbo_RevealActiveRoundTopicTestData
+            // OngoingRoundDoesNotHaveInfoSlide_TestAction
             // 
-            this.dbo_RevealActiveRoundTopicTestData.PosttestAction = dbo_RevealActiveRoundTopicTest_PosttestAction;
-            this.dbo_RevealActiveRoundTopicTestData.PretestAction = dbo_RevealActiveRoundTopicTest_PretestAction;
-            this.dbo_RevealActiveRoundTopicTestData.TestAction = dbo_RevealActiveRoundTopicTest_TestAction;
-            // 
-            // dbo_RevealActiveRoundTopicTest_TestAction
-            // 
-            dbo_RevealActiveRoundTopicTest_TestAction.Conditions.Add(scalarValueCondition1);
-            resources.ApplyResources(dbo_RevealActiveRoundTopicTest_TestAction, "dbo_RevealActiveRoundTopicTest_TestAction");
-            // 
-            // dbo_RevealActiveRoundTopicTest_PretestAction
-            // 
-            resources.ApplyResources(dbo_RevealActiveRoundTopicTest_PretestAction, "dbo_RevealActiveRoundTopicTest_PretestAction");
-            // 
-            // dbo_RevealActiveRoundTopicTest_PosttestAction
-            // 
-            resources.ApplyResources(dbo_RevealActiveRoundTopicTest_PosttestAction, "dbo_RevealActiveRoundTopicTest_PosttestAction");
+            OngoingRoundDoesNotHaveInfoSlide_TestAction.Conditions.Add(scalarValueCondition1);
+            resources.ApplyResources(OngoingRoundDoesNotHaveInfoSlide_TestAction, "OngoingRoundDoesNotHaveInfoSlide_TestAction");
             // 
             // scalarValueCondition1
             // 
@@ -82,11 +86,13 @@ namespace DSDD.DebatniMayhem.Database.Tests
             scalarValueCondition1.ResultSet = 1;
             scalarValueCondition1.RowNumber = 1;
             // 
-            // NoOngoingRoundData
+            // OngoingRoundDoesNotHaveInfoSlide_PretestAction
             // 
-            this.NoOngoingRoundData.PosttestAction = null;
-            this.NoOngoingRoundData.PretestAction = null;
-            this.NoOngoingRoundData.TestAction = NoOngoingRound_TestAction;
+            resources.ApplyResources(OngoingRoundDoesNotHaveInfoSlide_PretestAction, "OngoingRoundDoesNotHaveInfoSlide_PretestAction");
+            // 
+            // OngoingRoundDoesNotHaveInfoSlide_PosttestAction
+            // 
+            resources.ApplyResources(OngoingRoundDoesNotHaveInfoSlide_PosttestAction, "OngoingRoundDoesNotHaveInfoSlide_PosttestAction");
             // 
             // NoOngoingRound_TestAction
             // 
@@ -102,6 +108,76 @@ namespace DSDD.DebatniMayhem.Database.Tests
             scalarValueCondition2.NullExpected = false;
             scalarValueCondition2.ResultSet = 1;
             scalarValueCondition2.RowNumber = 1;
+            // 
+            // OngoingRoundHasInfoSlide_NotRevealed_TestAction
+            // 
+            OngoingRoundHasInfoSlide_NotRevealed_TestAction.Conditions.Add(scalarValueCondition3);
+            resources.ApplyResources(OngoingRoundHasInfoSlide_NotRevealed_TestAction, "OngoingRoundHasInfoSlide_NotRevealed_TestAction");
+            // 
+            // scalarValueCondition3
+            // 
+            scalarValueCondition3.ColumnNumber = 1;
+            scalarValueCondition3.Enabled = true;
+            scalarValueCondition3.ExpectedValue = "Toto kolo obsahuje info slide a je tedy nezbytné nejprve odhalit infoslide!";
+            scalarValueCondition3.Name = "scalarValueCondition3";
+            scalarValueCondition3.NullExpected = false;
+            scalarValueCondition3.ResultSet = 1;
+            scalarValueCondition3.RowNumber = 1;
+            // 
+            // OngoingRoundHasInfoSlide_NotRevealed_PretestAction
+            // 
+            resources.ApplyResources(OngoingRoundHasInfoSlide_NotRevealed_PretestAction, "OngoingRoundHasInfoSlide_NotRevealed_PretestAction");
+            // 
+            // OngoingRoundHasInfoSlide_Revealed_TestAction
+            // 
+            OngoingRoundHasInfoSlide_Revealed_TestAction.Conditions.Add(scalarValueCondition4);
+            resources.ApplyResources(OngoingRoundHasInfoSlide_Revealed_TestAction, "OngoingRoundHasInfoSlide_Revealed_TestAction");
+            // 
+            // scalarValueCondition4
+            // 
+            scalarValueCondition4.ColumnNumber = 1;
+            scalarValueCondition4.Enabled = true;
+            scalarValueCondition4.ExpectedValue = "true";
+            scalarValueCondition4.Name = "scalarValueCondition4";
+            scalarValueCondition4.NullExpected = false;
+            scalarValueCondition4.ResultSet = 1;
+            scalarValueCondition4.RowNumber = 1;
+            // 
+            // OngoingRoundHasInfoSlide_Revealed_PosttestAction
+            // 
+            resources.ApplyResources(OngoingRoundHasInfoSlide_Revealed_PosttestAction, "OngoingRoundHasInfoSlide_Revealed_PosttestAction");
+            // 
+            // OngoingRoundHasInfoSlide_NotRevealed_PosttestAction
+            // 
+            resources.ApplyResources(OngoingRoundHasInfoSlide_NotRevealed_PosttestAction, "OngoingRoundHasInfoSlide_NotRevealed_PosttestAction");
+            // 
+            // OngoingRoundHasInfoSlide_Revealed_PretestAction
+            // 
+            resources.ApplyResources(OngoingRoundHasInfoSlide_Revealed_PretestAction, "OngoingRoundHasInfoSlide_Revealed_PretestAction");
+            // 
+            // OngoingRoundDoesNotHaveInfoSlideData
+            // 
+            this.OngoingRoundDoesNotHaveInfoSlideData.PosttestAction = OngoingRoundDoesNotHaveInfoSlide_PosttestAction;
+            this.OngoingRoundDoesNotHaveInfoSlideData.PretestAction = OngoingRoundDoesNotHaveInfoSlide_PretestAction;
+            this.OngoingRoundDoesNotHaveInfoSlideData.TestAction = OngoingRoundDoesNotHaveInfoSlide_TestAction;
+            // 
+            // NoOngoingRoundData
+            // 
+            this.NoOngoingRoundData.PosttestAction = null;
+            this.NoOngoingRoundData.PretestAction = null;
+            this.NoOngoingRoundData.TestAction = NoOngoingRound_TestAction;
+            // 
+            // OngoingRoundHasInfoSlide_NotRevealedData
+            // 
+            this.OngoingRoundHasInfoSlide_NotRevealedData.PosttestAction = OngoingRoundHasInfoSlide_NotRevealed_PosttestAction;
+            this.OngoingRoundHasInfoSlide_NotRevealedData.PretestAction = OngoingRoundHasInfoSlide_NotRevealed_PretestAction;
+            this.OngoingRoundHasInfoSlide_NotRevealedData.TestAction = OngoingRoundHasInfoSlide_NotRevealed_TestAction;
+            // 
+            // OngoingRoundHasInfoSlide_RevealedData
+            // 
+            this.OngoingRoundHasInfoSlide_RevealedData.PosttestAction = OngoingRoundHasInfoSlide_Revealed_PosttestAction;
+            this.OngoingRoundHasInfoSlide_RevealedData.PretestAction = OngoingRoundHasInfoSlide_Revealed_PretestAction;
+            this.OngoingRoundHasInfoSlide_RevealedData.TestAction = OngoingRoundHasInfoSlide_Revealed_TestAction;
         }
 
         #endregion
@@ -122,9 +198,9 @@ namespace DSDD.DebatniMayhem.Database.Tests
         #endregion
 
         [TestMethod()]
-        public void dbo_RevealActiveRoundTopicTest()
+        public void OngoingRoundDoesNotHaveInfoSlide()
         {
-            SqlDatabaseTestActions testActions = this.dbo_RevealActiveRoundTopicTestData;
+            SqlDatabaseTestActions testActions = this.OngoingRoundDoesNotHaveInfoSlideData;
             // Execute the pre-test script
             // 
             System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
@@ -167,8 +243,58 @@ namespace DSDD.DebatniMayhem.Database.Tests
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
             }
         }
+        [TestMethod()]
+        public void OngoingRoundHasInfoSlide_NotRevealed()
+        {
+            SqlDatabaseTestActions testActions = this.OngoingRoundHasInfoSlide_NotRevealedData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void OngoingRoundHasInfoSlide_Revealed()
+        {
+            SqlDatabaseTestActions testActions = this.OngoingRoundHasInfoSlide_RevealedData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
 
-        private SqlDatabaseTestActions dbo_RevealActiveRoundTopicTestData;
+
+
+        private SqlDatabaseTestActions OngoingRoundDoesNotHaveInfoSlideData;
         private SqlDatabaseTestActions NoOngoingRoundData;
+        private SqlDatabaseTestActions OngoingRoundHasInfoSlide_NotRevealedData;
+        private SqlDatabaseTestActions OngoingRoundHasInfoSlide_RevealedData;
     }
 }

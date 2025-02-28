@@ -126,6 +126,8 @@ public partial class MayhemDbContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK__Rounds__3214EC076CA9BC27");
 
             entity.ToTable(tb => tb.HasTrigger("TR_EnsureSingleOngoingRound"));
+
+            entity.Property(e => e.ShowInfoSlide).HasDefaultValue(false);
         });
 
         OnModelCreatingPartial(modelBuilder);

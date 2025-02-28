@@ -12,7 +12,9 @@ builder
     })
     .AddRazorPages();
 
+#if !DEBUG
 builder.Services.AddOpenTelemetry().UseAzureMonitor();
+#endif
 
 var app = builder.Build();
 
