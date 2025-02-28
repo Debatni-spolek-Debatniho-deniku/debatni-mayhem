@@ -34,9 +34,13 @@ Aktivní kolo nelze zneaktivně dokud není ke všem debatám v kole přirazen v
 
 Aktivace kola skryje tezi i když byla předtím odhalená.
 
+#### dbo.RevealActiveRoundInfoSlide
+
+Odhalí info slide právě běžícího kola. Vrací error pokud právě běžící kolo nemá info slide.
+
 #### dbo.RevealActiveRoundTopic
 
-Odalí tezi právě běžícího kola.
+Odalí tezi právě běžícího kola. Vrací error pokud právě běžící kolo má info slide, který není odhalen.
 
 #### dbo.ScoreMatch
 
