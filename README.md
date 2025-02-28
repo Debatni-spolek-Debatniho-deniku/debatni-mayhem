@@ -52,6 +52,8 @@ Vyžaduje .NET 8 Runtime. Lze spustit v IIS nebo jako Azure App Service.
 
 Je potřeba dodat connection string jménem `MayhemDatabase` přes appsettings.json (sekce `ConnectionStrings`) nebo env proměnou (`ConnectionStrings:MayhemDatabase`).
 
+Pro tisk kartiček lze nastavit v konfiguraci položku `PrintingKey`. Pokud je vyplněná, tiskařský endpoint vyžadue query-string `key` odpovídající této hodnotě.
+
 ### Pohledy
 
 Všechny pohledy se obnovuje každých 10 vteřin.
@@ -73,3 +75,13 @@ O daném hráči zobrazuje, zda je účasten v nějaké debatě, jeho body kter�
 Dále zobrazuje historii debat kterých se účastnil a jejich výsledek.
 
 Je-li řečník účasten v debatě, zobrazuje ve vztahu k této debatě informace shodné se seznamem probíhajících debat.
+
+### Tisk kartiček
+
+URL: /print/{roundId:int}?key=
+
+Pro každé kolo lze pro rozhodčí vygenerovat kartičky. Každá kartička odpovídá jedné debatě.
+
+Kartička obsahuje tezi daného kola a proto je tento endpoint potenciálně nebezpečný.
+Tím že ID kol jsou vzestupná řada `int`, lze narozdíl od endpointu detailu hráče tipnout další ID v pořadí, a tak získat tezi.
+Proto je vhodné zabezpečit endpoint přes `PrintingKey` a jeho hodnotu udržovat v tajnosti.

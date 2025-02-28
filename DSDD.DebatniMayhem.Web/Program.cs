@@ -1,11 +1,19 @@
 using Azure.Monitor.OpenTelemetry.AspNetCore;
+using DSDD.DebatniMayhem.Web.Controllers;
 using DSDD.DebatniMayhem.Web.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder
     .Services
+    .Configure<PrintingController.PrintingConfiguration>(opts =>
+    {
+        opts.Key = builder.Configuration.GetValue<string>("PrintingKey");
+    })
     .AddDbContext<MayhemDbContext>(options =>
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("MayhemDatabase"));
@@ -36,5 +44,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapRazorPages();
+
+app.MapControllers();
 
 app.Run();
